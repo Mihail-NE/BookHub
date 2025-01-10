@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sidebar-link {
+  @apply flex items-center justify-start m-2.5 p-2.5 rounded-lg text-gray-600 hover:bg-violet-100 transition duration-200;
+}
+
+.sidebar-icon {
+  @apply h-6 w-6 text-gray-600 transition-colors duration-200;
+}
+
+.sidebar-link:hover {
+  @apply text-violet-600;
+}
+
+.sidebar-link:hover .sidebar-icon {
+  @apply text-violet-600;
+}
+
+.analitic-link {
+  @apply block p-2 text-sm text-gray-600 hover:bg-violet-100 transition-colors duration-200;
+}
+
+.analitic-link:hover {
+  @apply text-violet-600;
+}
