@@ -1,4 +1,3 @@
-
 const BookCard = ({
     title,
     author,
@@ -8,40 +7,68 @@ const BookCard = ({
     publishedDate,
     publisher,
     pageCount,
-    isbn,
-    language,
     categories,
     buyLink,
     previewLink,
     pdfAvailable,
     epubAvailable,
-    maturityRating,
-    printType
 }) => {
     return (
-        <div className="bg-white shadow-md rounded-lg overflow-hidden">
-            <img src={cover} alt={title} className="w-full h-48 object-cover" />
-            <div className="p-4">
-                <h2 className="text-lg font-semibold">{title}</h2>
-                <p className="text-gray-600">Автор: {author}</p>
-                <p className="text-gray-800 font-bold">
-                    {price} {currency}
-                </p>
-                <p>Дата публикации: {publishedDate}</p>
-                <p>Издатель: {publisher}</p>
-                <p>Количество страниц: {pageCount}</p>
-                <p>ISBN: {isbn}</p>
-                <p>Язык: {language}</p>
-                <p>Категория: {categories?.join(', ')}</p>
-                <p>Возрастной рейтинг: {maturityRating}</p>
-                <p>Тип печати: {printType}</p>
-                <div className="mt-2">
-                    <a href={buyLink} className="text-blue-500 hover:underline">Купить</a>
-                    <a href={previewLink} className="ml-2 text-blue-500 hover:underline">Предпросмотр</a>
+        <div className="flex bg-white shadow-md rounded-lg overflow-hidden w-full max-w-sm mx-auto">
+            <div className="h-48 w-32 bg-gray-200 flex items-center justify-center flex-shrink-0">
+                {cover ? (
+                    <img
+                        src={cover}
+                        alt={title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                    />
+                ) : (
+                    <div className="text-gray-500 text-sm">
+                        Нет изображения
+                    </div>
+                )}
+            </div>
+
+            <div className="flex flex-col w-90 justify-between p-4 flex-grow">
+                <div>
+                    <h2 className="text-base font-semibold text-gray-900 truncate">{title}</h2>
+                    <p className="text-sm text-gray-500 mb-2 truncate">Автор: {author}</p>
                 </div>
-                <p className="mt-2">
-                    PDF доступен: {pdfAvailable ? 'Да' : 'Нет'} | EPUB доступен: {epubAvailable ? 'Да' : 'Нет'}
+
+                <p className="text-md font-bold text-gray-800 mb-3">
+                    {price ? `${price} ${currency}` : "Цена не указана"}
                 </p>
+
+                <div className="text-sm text-gray-600 space-y-1">
+                    <p>Дата: {publishedDate || "Не указана"}</p>
+                    <p>Издатель: {publisher || "Не указан"}</p>
+                    <p>Страницы: {pageCount || "N/A"}</p>
+                    <p className="truncate">Категории: {categories?.join(", ") || "Нет"}</p>
+                </div>
+
+                <div className="mt-4 flex gap-2">
+                    {buyLink && (
+                        <a
+                            href={buyLink}
+                            className="text-xs text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded transition"
+                        >
+                            Купить
+                        </a>
+                    )}
+                    {previewLink && (
+                        <a
+                            href={previewLink}
+                            className="text-xs text-blue-500 hover:underline"
+                        >
+                            Предпросмотр
+                        </a>
+                    )}
+                </div>
+
+                <div className="mt-3 text-xs text-gray-500">
+                    PDF: {pdfAvailable ? "Да" : "Нет"} | EPUB: {epubAvailable ? "Да" : "Нет"}
+                </div>
             </div>
         </div>
     );

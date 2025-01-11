@@ -42,34 +42,28 @@ const BookList = () => {
     }
 
     return (
-        <div className="flex flex-wrap gap-4 p-10">
+        <div className="grid grid-cols-2 w-full m-auto p-16 gap-10 gap-x-10">
             {books.map((book) => (
-                <div
-                    className="flex-none w-25 h-30 sm:w-1/2 lg:w-1/3"
+                <BookCard
                     key={book.id}
-                >
-                    <BookCard
-                        title={book.volumeInfo.title}
-                        author={book.volumeInfo.authors?.[0]}
-                        cover={book.volumeInfo.imageLinks?.thumbnail}
-                        price={book.saleInfo.listPrice?.amount}
-                        currency={book.saleInfo.listPrice?.currencyCode}
-                        publishedDate={book.volumeInfo.publishedDate}
-                        publisher={book.volumeInfo.publisher}
-                        pageCount={book.volumeInfo.pageCount}
-                        isbn={
-                            book.volumeInfo.industryIdentifiers?.[0]?.identifier
-                        }
-                        language={book.volumeInfo.language}
-                        categories={book.volumeInfo.categories}
-                        buyLink={book.saleInfo.buyLink}
-                        previewLink={book.volumeInfo.previewLink}
-                        pdfAvailable={book.accessInfo.pdf?.isAvailable}
-                        epubAvailable={book.accessInfo.epub?.isAvailable}
-                        maturityRating={book.volumeInfo.maturityRating}
-                        printType={book.volumeInfo.printType}
-                    />
-                </div>
+                    title={book.volumeInfo.title}
+                    author={book.volumeInfo.authors?.[0]}
+                    cover={book.volumeInfo.imageLinks?.thumbnail}
+                    price={book.saleInfo.listPrice?.amount}
+                    currency={book.saleInfo.listPrice?.currencyCode}
+                    publishedDate={book.volumeInfo.publishedDate}
+                    publisher={book.volumeInfo.publisher}
+                    pageCount={book.volumeInfo.pageCount}
+                    isbn={book.volumeInfo.industryIdentifiers?.[0]?.identifier}
+                    language={book.volumeInfo.language}
+                    categories={book.volumeInfo.categories}
+                    buyLink={book.saleInfo.buyLink}
+                    previewLink={book.volumeInfo.previewLink}
+                    pdfAvailable={book.accessInfo.pdf?.isAvailable}
+                    epubAvailable={book.accessInfo.epub?.isAvailable}
+                    maturityRating={book.volumeInfo.maturityRating}
+                    printType={book.volumeInfo.printType}
+                />
             ))}
             {startIndex === 40 ? (
                 ""
