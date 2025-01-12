@@ -11,16 +11,16 @@ const BookCard = ({
     buyLink,
     previewLink,
     pdfAvailable,
-    epubAvailable,
+    epubAvailable
 }) => {
     return (
-        <div className="flex bg-white shadow-md rounded-lg overflow-hidden w-full max-w-sm mx-auto">
-            <div className="h-48 w-32 bg-gray-200 flex items-center justify-center flex-shrink-0">
+        <div className="flex bg-white items-center shadow-md rounded-lg overflow-hidden w-[660px] mx-auto">
+            <div className="h-[200px] w-32 bg-gray-200 flex  justify-center flex-shrink-0">
                 {cover ? (
                     <img
                         src={cover}
                         alt={title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover "
                         loading="lazy"
                     />
                 ) : (
@@ -30,9 +30,9 @@ const BookCard = ({
                 )}
             </div>
 
-            <div className="flex flex-col w-90 justify-between p-4 flex-grow">
+            <div className="flex flex-col justify-between p-4 flex-grow">
                 <div>
-                    <h2 className="text-base font-semibold text-gray-900 truncate">{title}</h2>
+                    <h2 className="text-base text-wrap font-semibold text-gray-900 truncate">{title}</h2>
                     <p className="text-sm text-gray-500 mb-2 truncate">Автор: {author}</p>
                 </div>
 
@@ -51,7 +51,7 @@ const BookCard = ({
                     {buyLink && (
                         <a
                             href={buyLink}
-                            className="text-xs text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded transition"
+                            className="text-xs text-white bg-violet-500 hover:bg-violet-600 px-3 py-1 rounded transition"
                         >
                             Купить
                         </a>
@@ -59,7 +59,7 @@ const BookCard = ({
                     {previewLink && (
                         <a
                             href={previewLink}
-                            className="text-xs text-blue-500 hover:underline"
+                            className="text-xs text-violet-500 hover:underline"
                         >
                             Предпросмотр
                         </a>

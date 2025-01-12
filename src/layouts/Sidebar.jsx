@@ -9,16 +9,17 @@ import {
     ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 
-const Sidebar = () => {
+const Sidebar = ({ open = false}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
+        open = !open;
     };
 
     return (
         <div
-            className={`flex flex-col h-screen bg-white shadow-md transition-all duration-300 ${
+            className={`flex flex-col h-screen bg-white shadow-md transition-all duration-300 fixed ${
                 isOpen ? "w-60" : "w-16"
             }`}
         >
@@ -45,7 +46,7 @@ const Sidebar = () => {
                         <Link to="/catalog" className="sidebar-link">
                             <BookOpenIcon className="sidebar-icon" />
                             {isOpen && (
-                                <span className="ml-4">Каталог книг</span>
+                                <span className="ml-4 text-nowrap">Каталог книг</span>
                             )}
                         </Link>
                     </li>

@@ -17,11 +17,3 @@
 .sidebar-link:hover .sidebar-icon {
   @apply text-violet-600;
 }
-
-.analitic-link {
-  @apply block p-2 text-sm text-gray-600 hover:bg-violet-100 transition-colors duration-200;
-}
-
-.analitic-link:hover {
-  @apply text-violet-600;
-}
