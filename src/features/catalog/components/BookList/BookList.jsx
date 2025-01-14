@@ -1,37 +1,15 @@
-import { useEffect, useState } from "react";
-import BookCard from "../BookCad/BookCad";
+import { useContext } from "react";
+import { DataContext } from '@/context/DataContext'
+import BookCard from './../BookCad/BookCad';
+
 
 const BookList = () => {
-    const [books, setBooks] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [startIndex, setStartIndex] = useState(10);
-
-    const fetchBooks = async () => {
-        try {
-            const response = await fetch(
-                `https://www.googleapis.com/books/v1/volumes?q=psychology&langRestrict=ru&maxResults=${startIndex}`
-            );
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            const data = await response.json();
-            setBooks(data.items);
-            console.log(books);
-        } catch (error) {
-            setError(error.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const { books, loading, error, startIndex, setStartIndex } =
+        useContext(DataContext);
 
     const showMore = () => {
         setStartIndex((prevIndex) => prevIndex + 10);
     };
-
-    useEffect(() => {
-        fetchBooks();
-    }, [startIndex]);
 
     if (loading) {
         return <div>Загрузка...</div>;
@@ -42,7 +20,7 @@ const BookList = () => {
     }
 
     return (
-        <>
+        <div className=" ml-64 p-14  flex flex-col gap-10">
             <div className="grid grid-cols-2 gap-10 w-full mx-auto">
                 {books.map((book) => (
                     <BookCard
@@ -79,7 +57,7 @@ const BookList = () => {
                     Показать еще
                 </button>
             )}
-        </>
+        </div>
     );
 };
 

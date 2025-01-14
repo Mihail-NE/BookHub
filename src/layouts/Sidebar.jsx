@@ -9,12 +9,11 @@ import {
     ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 
-const Sidebar = ({ open = false}) => {
+const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
-        open = !open;
     };
 
     return (

@@ -1,7 +1,16 @@
 import BookList from "../../features/catalog/components/BookList/BookList";
+import Filter from "../../features/catalog/components/Filter/Filter";
 
 const CatalogPage = () => {
-    return <BookList />;
+
+
+
+    return (
+        <>
+            <Filter />
+            <BookList />;
+        </>
+    );
 };
 
 export default CatalogPage;
