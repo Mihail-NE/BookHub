@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import { DataContext } from '@/context/DataContext'
-import BookCard from './../BookCad/BookCad';
-
+import { DataContext } from "@/context/DataContext";
+import BookCard from "./../BookCad/BookCad";
 
 const BookList = () => {
     const { books, loading, error, startIndex, setStartIndex } =
@@ -11,10 +10,13 @@ const BookList = () => {
         setStartIndex((prevIndex) => prevIndex + 10);
     };
 
+    if (books.length === 0 && !loading && !error) {
+        return <div>Нет книг</div>;
+    }
+
     if (loading) {
         return <div>Загрузка...</div>;
     }
-
     if (error) {
         return <div>Ошибка: {error}</div>;
     }

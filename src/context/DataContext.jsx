@@ -7,7 +7,7 @@ export const DataProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [startIndex, setStartIndex] = useState(10);
-    const [filteredBooks, setFilteredBooks] = useState(books);
+    // const [filteredBooks, setFilteredBooks] = useState([]);
 
     const fetchBooks = async () => {
         try {
@@ -32,7 +32,7 @@ export const DataProvider = ({ children }) => {
     }, [startIndex]);
 
     return (
-        <DataContext.Provider value={{ books, loading, error, startIndex, setStartIndex, filteredBooks, setFilteredBooks }}>
+        <DataContext.Provider value={{ books, loading, error, startIndex, setStartIndex, setBooks, fetchBooks }}>
             {children}
         </DataContext.Provider>
     );
