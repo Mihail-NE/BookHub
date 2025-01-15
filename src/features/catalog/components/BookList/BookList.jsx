@@ -27,6 +27,7 @@ const BookList = () => {
                 {books.map((book) => (
                     <BookCard
                         key={book.id}
+                        id={book.id}
                         title={book.volumeInfo.title}
                         author={book.volumeInfo.authors?.[0]}
                         cover={book.volumeInfo.imageLinks?.thumbnail}
@@ -41,7 +42,6 @@ const BookList = () => {
                         language={book.volumeInfo.language}
                         categories={book.volumeInfo.categories}
                         buyLink={book.saleInfo.buyLink}
-                        previewLink={book.volumeInfo.previewLink}
                         pdfAvailable={book.accessInfo.pdf?.isAvailable}
                         epubAvailable={book.accessInfo.epub?.isAvailable}
                         maturityRating={book.volumeInfo.maturityRating}
