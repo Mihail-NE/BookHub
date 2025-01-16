@@ -4,10 +4,14 @@ import { DataContext } from "../../../../context/DataContext";
 
 const BookInfo = () => {
     const { id } = useParams();
-    const { books } = useContext(DataContext);
+    const { books, cartID, setCartID } = useContext(DataContext);
+
+    const addToCart = () => {
+        setCartID([...cartID, id]);
+    };
+    console.log(cartID);
 
     const book = books.find((book) => book.id === id);
-    console.log(book);
 
     return (
         <div className="max-w-4xl mx-auto p-14">
@@ -26,11 +30,17 @@ const BookInfo = () => {
                     >
                         Купить книгу
                     </a>
-                    <a href="">
-                        <button className="mt-3 w-full block text-center bg-violet-500 text-white py-2 rounded-md">
+
+                    {book.saleInfo.listPrice.amount == undefined ? (
+                        ""
+                    ) : (
+                        <button
+                            onClick={addToCart}
+                            className="mt-3 w-full block text-center bg-violet-500 text-white py-2 rounded-md"
+                        >
                             Добавить в корзину
                         </button>
-                    </a>
+                    )}
                 </div>
 
                 <div className="w-2/3">

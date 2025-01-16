@@ -78,7 +78,7 @@ const Filter = () => {
     ];
 
     return (
-        <div className="flex items-center ml-64 pt-10 pl-14 space-x-4">
+        <div className="flex items-center justify-center pt-10 pl-14 space-x-4">
             <input
                 type="text"
                 value={searchInput}

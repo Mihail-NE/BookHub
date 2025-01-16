@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ShoppingCartIcon, HeartIcon } from "@heroicons/react/24/outline";
 
 const BookCard = ({
     id,
@@ -16,7 +17,7 @@ const BookCard = ({
     epubAvailable,
 }) => {
     return (
-        <div className="flex bg-white items-center shadow-md rounded-lg overflow-hidden w-[660px] mx-auto">
+        <div className="flex bg-white items-center shadow-md rounded-lg overflow-hidden w-[660px] mx-auto relative">
             <div className="h-[200px] w-32 bg-gray-200 flex  justify-center flex-shrink-0">
                 {cover ? (
                     <img
@@ -62,7 +63,10 @@ const BookCard = ({
                             Купить
                         </a>
                     )}
-                    <Link to={`/catalog/${id}`} className="text-xs text-violet-500 hover:underline">
+                    <Link
+                        to={`/catalog/${id}`}
+                        className="text-xs text-violet-500 hover:underline"
+                    >
                         <button className="text-xs text-white bg-violet-500 hover:bg-violet-600 px-3 py-1 rounded transition">
                             подробнее
                         </button>
@@ -73,6 +77,14 @@ const BookCard = ({
                     PDF: {pdfAvailable ? "Да" : "Нет"} | EPUB:{" "}
                     {epubAvailable ? "Да" : "Нет"}
                 </div>
+            </div>
+            <div className="flex absolute bottom-5 right-5 gap-4">
+                <button className="hover:text-violet-600 transition">
+                    <HeartIcon className="h-6 w-6" />
+                </button>
+                <button className="hover:text-violet-600 transition">
+                    <ShoppingCartIcon className="h-6 w-6" />
+                </button>
             </div>
         </div>
     );

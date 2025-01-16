@@ -18,7 +18,7 @@ const Sidebar = () => {
 
     return (
         <div
-            className={`flex flex-col h-screen bg-white shadow-md transition-all duration-300 fixed ${
+            className={`flex flex-col h-screen bg-white shadow-md transition-all duration-300 sticky top-0 ${
                 isOpen ? "w-60" : "w-16"
             }`}
         >

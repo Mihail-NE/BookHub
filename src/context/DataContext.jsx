@@ -2,7 +2,6 @@ import { createContext, useState, useEffect } from "react";
 
 export const DataContext = createContext();
 
-
 const API_KEY = "AIzaSyBXhQtZXjWIiWQKI_7cJaVb40WRz2-cwo4"
 
 export const DataProvider = ({ children }) => {
@@ -10,6 +9,7 @@ export const DataProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [startIndex, setStartIndex] = useState(10);
+    const [cartID, setCartID] = useState([]);
 
     const fetchBooks = async () => {
         try {
@@ -34,7 +34,7 @@ export const DataProvider = ({ children }) => {
     }, [startIndex]);
 
     return (
-        <DataContext.Provider value={{ books, loading, error, startIndex, setStartIndex, setBooks, fetchBooks }}>
+        <DataContext.Provider value={{ books, loading, error, startIndex, setStartIndex, setBooks, fetchBooks, cartID, setCartID }}>
             {children}
         </DataContext.Provider>
     );

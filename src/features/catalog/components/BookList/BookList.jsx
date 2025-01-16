@@ -22,7 +22,7 @@ const BookList = () => {
     }
 
     return (
-        <div className=" ml-64 p-14  flex flex-col gap-10">
+        <div className="p-14 flex flex-col gap-5">
             <div className="grid grid-cols-2 gap-10 w-full mx-auto">
                 {books.map((book) => (
                     <BookCard
