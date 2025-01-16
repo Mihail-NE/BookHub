@@ -3,8 +3,6 @@ import Filter from "../../features/catalog/components/Filter/Filter";
 
 const CatalogPage = () => {
 
-
-
     return (
         <>
             <Filter />

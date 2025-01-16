@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useCallback } from "react";
 import { DataContext } from "../../../../context/DataContext";
 
 const Filter = () => {
@@ -16,48 +16,53 @@ const Filter = () => {
         setSearchInput(e.target.value);
     };
 
-    const applyFilter = (selectedFilter) => {
-        let newFilteredArray;
-        switch (selectedFilter) {
-            case "name":
-                newFilteredArray = books.filter((book) =>
-                    book.volumeInfo.title
-                        .toLowerCase()
-                        .includes(searchInput.toLowerCase())
-                );
-                setBooks(newFilteredArray);
-                break;
-
-            case "author":
-                newFilteredArray = books.filter((book) =>
-                    book.volumeInfo.authors?.some((author) =>
-                        author.toLowerCase().includes(searchInput.toLowerCase())
-                    )
-                );
-                setBooks(newFilteredArray);
-                break;
-
-            case "category":
-                newFilteredArray = books.filter((book) =>
-                    book.volumeInfo.categories?.some((category) =>
-                        category
+    const applyFilter = useCallback(
+        (selectedFilter) => {
+            let newFilteredArray;
+            switch (selectedFilter) {
+                case "name":
+                    newFilteredArray = books.filter((book) =>
+                        book.volumeInfo.title
                             .toLowerCase()
                             .includes(searchInput.toLowerCase())
-                    )
-                );
-                setBooks(newFilteredArray);
-                break;
+                    );
+                    setBooks(newFilteredArray);
+                    break;
 
-            case "publisher":
-                newFilteredArray = books.filter((book) =>
-                    book.volumeInfo.publisher
-                        .toLowerCase()
-                        .includes(searchInput.toLowerCase())
-                );
-                setBooks(newFilteredArray);
-                break;
-        }
-    };
+                case "author":
+                    newFilteredArray = books.filter((book) =>
+                        book.volumeInfo.authors?.some((author) =>
+                            author
+                                .toLowerCase()
+                                .includes(searchInput.toLowerCase())
+                        )
+                    );
+                    setBooks(newFilteredArray);
+                    break;
+
+                case "category":
+                    newFilteredArray = books.filter((book) =>
+                        book.volumeInfo.categories?.some((category) =>
+                            category
+                                .toLowerCase()
+                                .includes(searchInput.toLowerCase())
+                        )
+                    );
+                    setBooks(newFilteredArray);
+                    break;
+
+                case "publisher":
+                    newFilteredArray = books.filter((book) =>
+                        book.volumeInfo.publisher
+                            .toLowerCase()
+                            .includes(searchInput.toLowerCase())
+                    );
+                    setBooks(newFilteredArray);
+                    break;
+            }
+        },
+        [books, searchInput]
+    );
 
     const removeFilters = () => {
         setSelectedFilter("name");
