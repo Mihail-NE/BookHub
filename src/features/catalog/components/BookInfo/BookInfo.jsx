@@ -15,6 +15,7 @@ const BookInfo = () => {
                 title: book.volumeInfo.title,
                 cover: book.volumeInfo.imageLinks?.thumbnail,
                 price: book.saleInfo.listPrice.amount,
+                quantity : 1,
             },
 
         });

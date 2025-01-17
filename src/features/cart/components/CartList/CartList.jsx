@@ -5,12 +5,15 @@ import { useContext } from "react";
 import { DataContext } from "./../../../../context/DataContext";
 
 const CartList = () => {
-    const { state } = useContext(DataContext);
-
+    const { state, dispatch } = useContext(DataContext);
 
     const cartProducts = state.cart.map((item) => item);
-    console.log(cartProducts);
 
+    const clearCart = () => {
+        dispatch({
+            type: "CLEAR_CART",
+        });
+    };
 
     if (cartProducts.length === 0) {
         return (
@@ -28,7 +31,6 @@ const CartList = () => {
             </motion.div>
         );
     }
-
 
     return (
         <motion.div
@@ -60,6 +62,14 @@ const CartList = () => {
                     {cartProducts.map((item, index) => (
                         <CartItem key={index} item={item} />
                     ))}
+                </div>
+                <div className="border-t border-gray-200 my-8">
+                    <button
+                        onClick={clearCart}
+                        className="mt-4 px-4 py-2 text-red-500 hover:text-red-600 text-sm font-medium rounded-lg border border-red-200 hover:bg-red-50 transition-colors duration-200"
+                    >
+                        Очистить корзину
+                    </button>
                 </div>
             </div>
             <CartTotal items={cartProducts} />

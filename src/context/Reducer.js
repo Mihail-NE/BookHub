@@ -1,5 +1,6 @@
 export const initialState = {
     cart: [],
+    total: 0,
 };
 
 export const reducer = (state, action) => {
@@ -27,6 +28,7 @@ export const reducer = (state, action) => {
                         ? { ...item, quantity: item.quantity + 1 }
                         : item
                 ),
+                total: state.total + 1,
             };
         case "DECREMENT_QUANTITY":
             return {
@@ -36,6 +38,7 @@ export const reducer = (state, action) => {
                         ? { ...item, quantity: item.quantity - 1 }
                         : item
                 ),
+                total: state.total - 1,
             };
     }
 };

@@ -18,7 +18,7 @@ const BookCard = ({
     pdfAvailable,
     epubAvailable,
 }) => {
-    const { dispatch } = useContext(DataContext);
+    const { state, dispatch } = useContext(DataContext);
 
     const addToCart = () => {
         dispatch({
@@ -28,6 +28,7 @@ const BookCard = ({
                 title,
                 cover,
                 price,
+                quantity: 1,
             },
         });
         console.log(id, title, cover);;
@@ -101,7 +102,7 @@ const BookCard = ({
                     <HeartIcon className="h-6 w-6" />
                 </button>
                 <button onClick={addToCart} className="hover:text-violet-600 transition">
-                    <ShoppingCartIcon className="h-6 w-6" />
+                    <ShoppingCartIcon className={`h-6 w-6 ${state.cart.some((item) => item.id === id) ? "text-violet-500" : ""}`}  />
                 </button>
             </div>
         </div>
