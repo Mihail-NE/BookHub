@@ -1,6 +1,6 @@
 const CartTotal = ({ items }) => {
   const subtotal = items.reduce((sum, item) => {
-      const price = item?.saleInfo?.listPrice?.amount || 0;
+      const price = item.price || 0;
       return sum + price;
   }, 0);
 

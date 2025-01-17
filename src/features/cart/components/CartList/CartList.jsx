@@ -5,11 +5,12 @@ import { useContext } from "react";
 import { DataContext } from "./../../../../context/DataContext";
 
 const CartList = () => {
-    const { cartID, books } = useContext(DataContext);
+    const { state } = useContext(DataContext);
 
-    const cartProducts = cartID.map((id) =>
-        books.find((book) => book.id === id)
-    );
+
+    const cartProducts = state.cart.map((item) => item);
+    console.log(cartProducts);
+
 
     if (cartProducts.length === 0) {
         return (
@@ -28,7 +29,6 @@ const CartList = () => {
         );
     }
 
-    console.log("Cart:", cartProducts);
 
     return (
         <motion.div

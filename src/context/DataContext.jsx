@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useReducer } from "react";
+import { reducer, initialState } from "./Reducer";
 
 export const DataContext = createContext();
 
@@ -10,6 +11,7 @@ export const DataProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [startIndex, setStartIndex] = useState(10);
     const [cartID, setCartID] = useState([]);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     const fetchBooks = async () => {
         try {
@@ -34,7 +36,7 @@ export const DataProvider = ({ children }) => {
     }, [startIndex]);
 
     return (
-        <DataContext.Provider value={{ books, loading, error, startIndex, setStartIndex, setBooks, fetchBooks, cartID, setCartID }}>
+        <DataContext.Provider value={{ books, loading, error, startIndex, setStartIndex, setBooks, fetchBooks, cartID, setCartID, state, dispatch }}>
             {children}
         </DataContext.Provider>
     );

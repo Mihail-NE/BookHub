@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ShoppingCartIcon, HeartIcon } from "@heroicons/react/24/outline";
+import { DataContext } from "../../../../context/DataContext";
+import { useContext } from "react";
 
 const BookCard = ({
     id,
@@ -16,6 +18,22 @@ const BookCard = ({
     pdfAvailable,
     epubAvailable,
 }) => {
+    const { dispatch } = useContext(DataContext);
+
+    const addToCart = () => {
+        dispatch({
+            type: "ADD_TO_CART",
+            payload: {
+                id,
+                title,
+                cover,
+                price,
+            },
+        });
+        console.log(id, title, cover);;
+    };
+
+
     return (
         <div className="flex bg-white items-center shadow-md rounded-lg overflow-hidden w-[660px] mx-auto relative">
             <div className="h-[200px] w-32 bg-gray-200 flex  justify-center flex-shrink-0">
@@ -82,7 +100,7 @@ const BookCard = ({
                 <button className="hover:text-violet-600 transition">
                     <HeartIcon className="h-6 w-6" />
                 </button>
-                <button className="hover:text-violet-600 transition">
+                <button onClick={addToCart} className="hover:text-violet-600 transition">
                     <ShoppingCartIcon className="h-6 w-6" />
                 </button>
             </div>

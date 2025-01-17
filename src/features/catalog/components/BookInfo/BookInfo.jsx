@@ -2,14 +2,24 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../../../../context/DataContext";
 
+
 const BookInfo = () => {
     const { id } = useParams();
-    const { books, cartID, setCartID } = useContext(DataContext);
+    const { books, dispatch } = useContext(DataContext);
 
     const addToCart = () => {
-        setCartID([...cartID, id]);
+        dispatch({
+            type: "ADD_TO_CART",
+            payload: {
+                id: book.id,
+                title: book.volumeInfo.title,
+                cover: book.volumeInfo.imageLinks?.thumbnail,
+                price: book.saleInfo.listPrice.amount,
+            },
+
+        });
     };
-    console.log(cartID);
+
 
     const book = books.find((book) => book.id === id);
 

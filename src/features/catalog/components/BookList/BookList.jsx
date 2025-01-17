@@ -3,7 +3,7 @@ import { DataContext } from "@/context/DataContext";
 import BookCard from "./../BookCad/BookCad";
 
 const BookList = () => {
-    const { books, loading, error, startIndex, setStartIndex } =
+    const { books, loading, error, startIndex, setStartIndex, } =
         useContext(DataContext);
 
     const showMore = () => {
