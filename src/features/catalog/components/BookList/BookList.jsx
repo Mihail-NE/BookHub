@@ -1,28 +1,20 @@
 import { useContext } from "react";
 import { DataContext } from "@/context/DataContext";
 import BookCard from "./../BookCad/BookCad";
+import Sceleton from "../Sceleton/Sceleton";
 
 const BookList = () => {
-    const { books, loading, error, startIndex, setStartIndex, } =
+    const { books, loading, error, startIndex, setStartIndex } =
         useContext(DataContext);
 
     const showMore = () => {
         setStartIndex((prevIndex) => prevIndex + 10);
     };
 
-    if (books.length === 0 && !loading && !error) {
-        return <div>Нет книг</div>;
-    }
-
-    if (loading) {
-        return <div>Загрузка...</div>;
-    }
-    if (error) {
-        return <div>Ошибка: {error}</div>;
-    }
-
     return (
         <div className="p-14 flex flex-col gap-5">
+            {error && <div>Ошибка: {error}</div>}
+            {loading && <Sceleton />}
             <div className="grid grid-cols-2 gap-10 w-full mx-auto">
                 {books.map((book) => (
                     <BookCard

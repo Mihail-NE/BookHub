@@ -7,7 +7,7 @@ const API_KEY = "AIzaSyBXhQtZXjWIiWQKI_7cJaVb40WRz2-cwo4"
 
 export const DataProvider = ({ children }) => {
     const [books, setBooks] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
     const [startIndex, setStartIndex] = useState(10);
     const [cartID, setCartID] = useState([]);
@@ -15,6 +15,7 @@ export const DataProvider = ({ children }) => {
 
     const fetchBooks = async () => {
         try {
+            setLoading(true);
             const response = await fetch(
                 `https://www.googleapis.com/books/v1/volumes?q=psychology&langRestrict=ru&maxResults=${startIndex}&key=${API_KEY}`
             );
@@ -23,7 +24,6 @@ export const DataProvider = ({ children }) => {
             }
             const data = await response.json();
             setBooks(data.items);
-            console.log(books);
         } catch (error) {
             setError(error.message);
         } finally {

@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
+
+import Sceleton from './../../features/catalog/components/Sceleton/Sceleton';
 
 const HomePage = () => {
     return (
         <>
-            <div>HomePage</div>
-            <Link to="/about">About</Link>
-            <Link to="/books">Contact</Link>
+            <Sceleton />
         </>
     );
 };
