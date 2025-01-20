@@ -31,7 +31,6 @@ const BookCard = ({
                 quantity: 1,
             },
         });
-        console.log(id, title, cover);;
     };
 
 

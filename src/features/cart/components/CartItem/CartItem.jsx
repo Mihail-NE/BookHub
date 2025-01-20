@@ -20,6 +20,12 @@ const CartItem = ({ item }) => {
             });
         }
     };
+    const removeFromCart = () => {
+        dispatch({
+            type: "REMOVE_FROM_CART",
+            payload: item.id,
+        });
+    };
 
     return (
         <div className="relative flex justify-between items-center p-4 border-b hover:bg-gray-50 transition">
@@ -59,9 +65,7 @@ const CartItem = ({ item }) => {
             </div>
             <span className="absolute right-4 top-[50%] translate-y-[-50%]">
                 <TrashIcon
-                    onClick={() =>
-                        dispatch({ type: "REMOVE_FROM_CART", payload: item.id })
-                    }
+                    onClick={removeFromCart}
                     className="h-5 w-5 cursor-pointer hover:text-red-500 text-gray-500 duration-200"
                 />
             </span>

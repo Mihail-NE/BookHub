@@ -1,9 +1,10 @@
 import { createContext, useState, useEffect, useReducer } from "react";
 import { reducer, initialState } from "./Reducer";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const DataContext = createContext();
 
-const API_KEY = "AIzaSyBXhQtZXjWIiWQKI_7cJaVb40WRz2-cwo4"
+const API_KEY = "AIzaSyBXhQtZXjWIiWQKI_7cJaVb40WRz2-cwo4";
 
 export const DataProvider = ({ children }) => {
     const [books, setBooks] = useState([]);
@@ -12,6 +13,7 @@ export const DataProvider = ({ children }) => {
     const [startIndex, setStartIndex] = useState(10);
     const [cartID, setCartID] = useState([]);
     const [state, dispatch] = useReducer(reducer, initialState);
+    const [storedCart, setStoredCart] = useLocalStorage("cart", []);
 
     const fetchBooks = async () => {
         try {
@@ -32,11 +34,33 @@ export const DataProvider = ({ children }) => {
     };
 
     useEffect(() => {
+        dispatch({ type: "SET_CART", payload: storedCart });
+    }, []);
+
+    useEffect(() => {
+        setStoredCart(state.cart);
+    }, [state.cart]);
+
+    useEffect(() => {
         fetchBooks();
     }, [startIndex]);
 
     return (
-        <DataContext.Provider value={{ books, loading, error, startIndex, setStartIndex, setBooks, fetchBooks, cartID, setCartID, state, dispatch }}>
+        <DataContext.Provider
+            value={{
+                books,
+                loading,
+                error,
+                startIndex,
+                setStartIndex,
+                setBooks,
+                fetchBooks,
+                cartID,
+                setCartID,
+                state,
+                dispatch,
+            }}
+        >
             {children}
         </DataContext.Provider>
     );
