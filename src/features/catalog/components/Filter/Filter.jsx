@@ -12,19 +12,33 @@ const Filter = () => {
         fetchBooks();
     };
 
+    const serchBooks = () => {
+        applyFilter(selectedFilter);
+    };
+
     const searchInputChange = (e) => {
-        setSearchInput(e.target.value);
+        e.preventDefault();
+        const newValue = e.target.value;
+        if (newValue === '') {
+            fetchBooks();
+        } else {
+            applyFilter(selectedFilter, newValue);
+        }
+        setSearchInput(newValue);
+        applyFilter(selectedFilter, newValue);
     };
 
     const applyFilter = useCallback(
-        (selectedFilter) => {
+
+        (selectedFilter, currentSearchValue) => {
+            const searchValue = currentSearchValue ?? searchInput;
             let newFilteredArray;
             switch (selectedFilter) {
                 case "name":
                     newFilteredArray = books.filter((book) =>
                         book.volumeInfo.title
                             .toLowerCase()
-                            .includes(searchInput.toLowerCase())
+                            .includes(searchValue.toLowerCase())
                     );
                     setBooks(newFilteredArray);
                     break;
@@ -34,7 +48,7 @@ const Filter = () => {
                         book.volumeInfo.authors?.some((author) =>
                             author
                                 .toLowerCase()
-                                .includes(searchInput.toLowerCase())
+                                .includes(searchValue.toLowerCase())
                         )
                     );
                     setBooks(newFilteredArray);
@@ -45,7 +59,7 @@ const Filter = () => {
                         book.volumeInfo.categories?.some((category) =>
                             category
                                 .toLowerCase()
-                                .includes(searchInput.toLowerCase())
+                                .includes(searchValue.toLowerCase())
                         )
                     );
                     setBooks(newFilteredArray);
@@ -55,7 +69,7 @@ const Filter = () => {
                     newFilteredArray = books.filter((book) =>
                         book.volumeInfo.publisher
                             .toLowerCase()
-                            .includes(searchInput.toLowerCase())
+                            .includes(searchValue.toLowerCase())
                     );
                     setBooks(newFilteredArray);
                     break;
@@ -99,7 +113,7 @@ const Filter = () => {
                 ))}
             </select>
             <button
-                onClick={() => applyFilter(selectedFilter)}
+                onClick={serchBooks}
                 className="bg-violet-500 text-white rounded-md px-4 py-2 hover:bg-violet-600 transition duration-200"
             >
                 Применить
