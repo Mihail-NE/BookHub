@@ -7,6 +7,7 @@ import {
     UserIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
+    HeartIcon,
 } from "@heroicons/react/24/outline";
 import { DataContext } from "./../context/DataContext";
 
@@ -87,6 +88,27 @@ const Sidebar = () => {
                                 </span>
                             )}
                             {isOpen && <span className="ml-4">Корзина</span>}
+                        </NavLink>
+                    </li>
+
+                    <li>
+                    <NavLink
+                            to="/favorites"
+                            className={({ isActive }) =>
+                                `group flex items-center justify-start m-2.5 p-2.5 rounded-lg transition duration-200 relative ${
+                                    isActive
+                                        ? "bg-violet-100 text-violet-600 [&>svg]:text-violet-600"
+                                        : "text-gray-600 hover:bg-violet-100 hover:text-violet-600"
+                                }`
+                            }
+                        >
+                            <HeartIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
+                            {state.favorites.length > 0 && (
+                                <span className="absolute -top-2 -right-2 bg-violet-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                                    {state.favorites.length}
+                                </span>
+                            )}
+                            {isOpen && <span className="ml-4">Избранное</span>}
                         </NavLink>
                     </li>
 

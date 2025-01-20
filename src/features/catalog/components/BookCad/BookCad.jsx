@@ -33,6 +33,20 @@ const BookCard = ({
         });
     };
 
+    const addToFavorites = () => {
+        dispatch({
+            type: "ADD_TO_FAVORITES",
+            payload: {
+                id,
+                title,
+                cover,
+                price,
+            },
+        });
+    };
+
+
+
 
     return (
         <div className="flex bg-white items-center shadow-md rounded-lg overflow-hidden w-[660px] mx-auto relative">
@@ -97,8 +111,8 @@ const BookCard = ({
                 </div>
             </div>
             <div className="flex absolute bottom-5 right-5 gap-4">
-                <button className="hover:text-violet-600 transition">
-                    <HeartIcon className="h-6 w-6" />
+                <button onClick={addToFavorites} className="hover:text-violet-600 transition">
+                    <HeartIcon className={`h-6 w-6 ${state.favorites.some((item) => item.id === id) ? "text-violet-500" : ""}`} />
                 </button>
                 <button onClick={addToCart} className="hover:text-violet-600 transition">
                     <ShoppingCartIcon className={`h-6 w-6 ${state.cart.some((item) => item.id === id) ? "text-violet-500" : ""}`}  />

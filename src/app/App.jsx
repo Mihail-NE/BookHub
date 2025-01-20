@@ -6,6 +6,7 @@ import CatalogPage from "../pages/Catalog/CatalogPage";
 import { DataProvider } from "../context/DataContext";
 import BookInfo from "../features/catalog/components/BookInfo/BookInfo";
 import Cart from "../pages/Cart/Cart";
+import Favorites from "../pages/Favorites/Favorites";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/catalog" element={<CatalogPage />} />
                         <Route path="/cart" element={<Cart />} />
+                        <Route path="/favorites" element={<Favorites />} />
                         <Route path="/catalog/:id" element={<BookInfo />} />
                     </Routes>
                 </Layout>

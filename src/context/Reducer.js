@@ -1,5 +1,6 @@
 export const initialState = {
     cart: [],
+    favorites: [],
     total: 0,
 };
 
@@ -9,6 +10,11 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 cart: action.payload,
+            };
+        case "SET_FAVORITES":
+            return {
+                ...state,
+                favorites: action.payload,
             };
         case "ADD_TO_CART": {
             const existingItem = state.cart.find(
@@ -61,5 +67,27 @@ export const reducer = (state, action) => {
                 ),
                 total: state.total - 1,
             };
+
+        case "ADD_TO_FAVORITES": {
+            const existingItem = state.favorites.find(
+                (item) => item.id === action.payload.id
+            );
+            if (existingItem) {
+                return state;
+            }
+            return {
+                ...state,
+                favorites: [...state.favorites, action.payload],
+            };
+        }
+        case "REMOVE_FROM_FAVORITES":
+
+            return {
+                ...state,
+                favorites: state.favorites.filter(
+                    (item) => item.id !== action.payload
+                ),
+            };
+
     }
 };

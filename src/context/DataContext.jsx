@@ -35,11 +35,13 @@ export const DataProvider = ({ children }) => {
 
     useEffect(() => {
         dispatch({ type: "SET_CART", payload: storedCart });
+        dispatch({ type: "SET_FAVORITES", payload: storedCart });
     }, []);
 
     useEffect(() => {
-        setStoredCart(state.cart);
-    }, [state.cart]);
+        setStoredCart(state.cart, state.favorites);
+
+    }, [state.cart, state.favorites]);
 
     useEffect(() => {
         fetchBooks();
