@@ -2,7 +2,7 @@ import CartItem from "./../CartItem/CartItem";
 import CartTotal from "../CartTotal/CartTotal";
 import { motion } from "framer-motion";
 import { useContext } from "react";
-import { DataContext } from "./../../../../context/DataContext";
+import { DataContext } from "../../../context/DataContext";
 import { Link } from "react-router-dom";
 
 const CartList = () => {

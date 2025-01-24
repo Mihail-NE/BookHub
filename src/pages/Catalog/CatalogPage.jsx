@@ -1,5 +1,5 @@
-import BookList from "../../features/catalog/components/BookList/BookList";
-import Filter from "../../features/catalog/components/Filter/Filter";
+import BookList from "../../features/catalog/BookList/BookList";
+import Filter from "../../features/catalog/Filter/Filter";
 
 const CatalogPage = () => {
 

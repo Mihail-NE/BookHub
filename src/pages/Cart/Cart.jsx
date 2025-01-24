@@ -1,4 +1,4 @@
-import CartList from './../../features/cart/components/CartList/CartList';
+import CartList from './../../features/cart/CartList/CartList';
 
 const Cart = () => {
   return (

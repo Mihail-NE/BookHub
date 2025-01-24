@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ShoppingCartIcon, HeartIcon } from "@heroicons/react/24/outline";
-import { DataContext } from "../../../../context/DataContext";
+import { DataContext } from "../../../context/DataContext";
 import { useContext } from "react";
 
 const BookCard = ({
@@ -14,7 +14,6 @@ const BookCard = ({
     publisher,
     pageCount,
     categories,
-    buyLink,
     pdfAvailable,
     epubAvailable,
 }) => {
@@ -87,14 +86,6 @@ const BookCard = ({
                 </div>
 
                 <div className="mt-4 flex gap-2">
-                    {buyLink && (
-                        <a
-                            href={buyLink}
-                            className="text-xs text-white bg-violet-500 hover:bg-violet-600 px-3 py-1 rounded transition"
-                        >
-                            Купить
-                        </a>
-                    )}
                     <Link
                         to={`/catalog/${id}`}
                         className="text-xs text-violet-500 hover:underline"
@@ -114,9 +105,12 @@ const BookCard = ({
                 <button onClick={addToFavorites} className="hover:text-violet-600 transition">
                     <HeartIcon className={`h-6 w-6 ${state.favorites.some((item) => item.id === id) ? "text-violet-500" : ""}`} />
                 </button>
-                <button onClick={addToCart} className="hover:text-violet-600 transition">
-                    <ShoppingCartIcon className={`h-6 w-6 ${state.cart.some((item) => item.id === id) ? "text-violet-500" : ""}`}  />
-                </button>
+
+                {price && (
+                    <button onClick={addToCart} className="hover:text-violet-600 transition">
+                        <ShoppingCartIcon className={`h-6 w-6 ${state.cart.some((item) => item.id === id) ? "text-violet-500" : ""}`} />
+                    </button>
+                )}
             </div>
         </div>
     );

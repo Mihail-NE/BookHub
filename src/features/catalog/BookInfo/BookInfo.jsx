@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
-import { DataContext } from "../../../../context/DataContext";
-
+import { DataContext } from "../../../context/DataContext";
 
 const BookInfo = () => {
     const { id } = useParams();
@@ -15,12 +14,22 @@ const BookInfo = () => {
                 title: book.volumeInfo.title,
                 cover: book.volumeInfo.imageLinks?.thumbnail,
                 price: book.saleInfo.listPrice.amount,
-                quantity : 1,
+                quantity: 1,
             },
-
         });
     };
 
+    const addToFavorites = () => {
+        dispatch({
+            type: "ADD_TO_FAVORITES",
+            payload: {
+                id: book.id,
+                title: book.volumeInfo.title,
+                cover: book.volumeInfo.imageLinks?.thumbnail,
+                price: book.saleInfo.listPrice.amount,
+            },
+        });
+    };
 
     const book = books.find((book) => book.id === id);
 
@@ -33,18 +42,8 @@ const BookInfo = () => {
                         alt={book.volumeInfo.title}
                         className="w-full rounded-lg shadow-lg"
                     />
-                    <a
-                        href={book.saleInfo.buyLink}
-                        className="mt-4 block text-center bg-violet-500 text-white py-2 rounded-md"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Купить книгу
-                    </a>
 
-                    {book.saleInfo.listPrice.amount == undefined ? (
-                        ""
-                    ) : (
+                    {book.saleInfo.listPrice && (
                         <button
                             onClick={addToCart}
                             className="mt-3 w-full block text-center bg-violet-500 text-white py-2 rounded-md"
@@ -52,6 +51,12 @@ const BookInfo = () => {
                             Добавить в корзину
                         </button>
                     )}
+                    <button
+                        onClick={addToFavorites}
+                        className="mt-3 w-full block text-center bg-violet-500 text-white py-2 rounded-md"
+                    >
+                        Добавить в избранное
+                    </button>
                 </div>
 
                 <div className="w-2/3">

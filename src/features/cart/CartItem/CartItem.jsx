@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DataContext } from "../../../../context/DataContext";
+import { DataContext } from "../../../context/DataContext";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
 const CartItem = ({ item }) => {
