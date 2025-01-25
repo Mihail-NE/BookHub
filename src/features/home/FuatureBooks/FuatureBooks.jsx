@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import BookCard from "./../../catalog/BookCad/BookCad";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import Sceleton from "./../../catalog/Sceleton/Sceleton";
 
-const FeaturedBooks = ({ books }) => {
+const FeaturedBooks = ({ books, loading }) => {
     return (
         <div className="container mx-auto py-16">
             <div className="text-center mb-16">
@@ -12,6 +13,7 @@ const FeaturedBooks = ({ books }) => {
                 <div className="w-24 h-1 bg-violet-500 mx-auto"></div>
             </div>
             <div className="flex flex-wrap gap-8 justify-center">
+                {loading && <Sceleton />}
                 {books.slice(0, 4).map((book) => (
                     <BookCard
                         key={book.id}
@@ -33,7 +35,7 @@ const FeaturedBooks = ({ books }) => {
                                          flex items-center mx-auto space-x-2"
                     >
                         <span>Смотреть все книги</span>
-                        <ArrowRightIcon className="w-6 h-6"/>
+                        <ArrowRightIcon className="w-6 h-6" />
                     </button>
                 </Link>
             </div>

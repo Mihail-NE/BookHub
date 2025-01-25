@@ -1,33 +1,33 @@
 const Testimonials = () => {
     const testimonials = [
         {
-            name: "Анна Иванова",
-            photo: "https://via.placeholder.com/150",
+            name: "Маргарита Егорова",
+            photo: "./src/assets/images/maria.jpg",
             text: "Отличный сервис! Быстрая доставка и огромный выбор книг.",
         },
         {
-            name: "Иван Петров",
-            photo: "https://via.placeholder.com/150",
+            name: "Иван Краснов",
+            photo: "./src/assets/images/ivan.jpg",
             text: "Очень удобно и легко найти нужную книгу. Рекомендую!",
         },
     ];
 
     return (
         <div className="container mx-auto py-16">
-            <h2 className="text-3xl font-bold text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-800  text-center mb-12">
                 Что говорят наши читатели
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {testimonials.map((testimonial, index) => (
                     <div
                         key={index}
-                        className="bg-white p-6 rounded-lg shadow-md"
+                        className="bg-white p-6 rounded-lg shadow-xl border border-gray-300 hover:border-violet-400 transition-all duration-300 cursor-pointer"
                     >
                         <div className="flex items-center mb-4">
                             <img
                                 src={testimonial.photo}
                                 alt={testimonial.name}
-                                className="w-12 h-12 rounded-full mr-4"
+                                className="w-24 h-24 rounded-full mr-4"
                             />
                             <h3 className="text-xl font-semibold">
                                 {testimonial.name}
