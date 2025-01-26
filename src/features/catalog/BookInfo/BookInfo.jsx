@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../../../context/DataContext";
+import useBooks from "../../../hooks/useBooks";
 
 const BookInfo = () => {
     const { id } = useParams();
-    const { books, dispatch } = useContext(DataContext);
+    const { books } = useBooks();
+    const { dispatch } = useContext(DataContext);
 
     const addToCart = () => {
         dispatch({
