@@ -28,12 +28,12 @@ const BookInfo = () => {
                 id: book.id,
                 title: book.volumeInfo.title,
                 cover: book.volumeInfo.imageLinks?.thumbnail,
-                price: book.saleInfo.listPrice.amount,
+                price: book.saleInfo.listPrice?.amount,
             },
         });
     };
 
-    const book = books.find((book) => book.id === id);
+    const book = books?.items?.find((book) => book.id === id);
 
     return (
         <div className="max-w-4xl mx-auto p-14">

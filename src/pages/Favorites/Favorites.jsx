@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
-import { TrashIcon } from "@heroicons/react/24/outline";
+import { TrashIcon, HeartIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 const Favorites = () => {
@@ -25,19 +25,7 @@ const Favorites = () => {
             >
                 <div className="w-2/3 mx-auto bg-white rounded-lg shadow-lg p-12 text-center">
                     <div className="mb-8">
-                        <svg
-                            className="w-24 h-24 mx-auto text-gray-300"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                            />
-                        </svg>
+                        <HeartIcon className="w-24 h-24 mx-auto text-gray-300" />
                     </div>
                     <h2 className="text-3xl font-bold text-gray-800 mb-4">
                         Список избранного пуст
@@ -45,9 +33,11 @@ const Favorites = () => {
                     <p className="text-gray-600 mb-8">
                         Добавьте книги, которые вам понравились!
                     </p>
-                    <Link to="/catalog"><button className="bg-violet-500 text-white px-6 py-3 rounded-lg hover:bg-violet-600 transition duration-300 ease-in-out transform hover:scale-105">
-                        Найти книги
-                    </button></Link>
+                    <Link to="/catalog">
+                        <button className="bg-violet-500 text-white px-6 py-3 rounded-lg hover:bg-violet-600 transition duration-300 ease-in-out transform hover:scale-105">
+                            Найти книги
+                        </button>
+                    </Link>
                 </div>
             </motion.div>
         );

@@ -1,6 +1,5 @@
 import CartItem from "./../CartItem/CartItem";
 import CartTotal from "../CartTotal/CartTotal";
-import { motion } from "framer-motion";
 import { useContext } from "react";
 import { DataContext } from "../../../context/DataContext";
 import { Link } from "react-router-dom";
@@ -18,11 +17,7 @@ const CartList = () => {
 
     if (cartProducts.length === 0) {
         return (
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="p-14 flex justify-center items-center min-h-[70vh]"
-            >
+            <div className="p-14 flex justify-center items-center min-h-[70vh]">
                 <div className="w-2/3 mx-auto bg-white rounded-lg shadow-lg p-12 text-center">
                     <div className="mb-8">
                         <svg
@@ -51,16 +46,12 @@ const CartList = () => {
                         </button>
                     </Link>
                 </div>
-            </motion.div>
+            </div>
         );
     }
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-14 flex gap-10"
-        >
+        <div className="p-14 flex gap-10">
             <div className="w-2/3 mx-auto bg-white rounded-lg shadow-lg p-6">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">
                     Корзина
@@ -96,7 +87,7 @@ const CartList = () => {
                 </div>
             </div>
             <CartTotal items={cartProducts} />
-        </motion.div>
+        </div>
     );
 };
 
