@@ -6,22 +6,38 @@ import { DataProvider } from "../context/DataContext";
 import BookInfo from "../features/catalog/BookInfo/BookInfo";
 import Cart from "../pages/Cart/Cart";
 import Favorites from "../pages/Favorites/Favorites";
+import { AuthProvider } from "../context/AuthContext";
+import Auth from "../pages/Auth/Auth";
+import Profile from "../pages/Profile/Profile";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 function App() {
     return (
-        <DataProvider>
-            <Router>
-                <Layout>
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/catalog" element={<CatalogPage />} />
-                        <Route path="/cart" element={<Cart />} />
-                        <Route path="/favorites" element={<Favorites />} />
-                        <Route path="/catalog/:id" element={<BookInfo />} />
-                    </Routes>
-                </Layout>
-            </Router>
-        </DataProvider>
+        <AuthProvider>
+            <DataProvider>
+                <Router>
+                    <Layout>
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/catalog" element={<CatalogPage />} />
+                            <Route path="/cart" element={<Cart />} />
+                            <Route path="/favorites" element={<Favorites />} />
+                            <Route path="/login" element={<Auth />} />
+                            <Route
+                                path="/profile"
+                                element={
+                                    <ProtectedRoute>
+                                        <Profile />
+                                    </ProtectedRoute>
+                                }
+                            />
+
+                            <Route path="/catalog/:id" element={<BookInfo />} />
+                        </Routes>
+                    </Layout>
+                </Router>
+            </DataProvider>
+        </AuthProvider>
     );
 }
 

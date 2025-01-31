@@ -8,6 +8,7 @@ import {
     ChevronLeftIcon,
     ChevronRightIcon,
     HeartIcon,
+    ArrowRightCircleIcon
 } from "@heroicons/react/24/outline";
 import { DataContext } from "./../context/DataContext";
 
@@ -125,6 +126,22 @@ const Sidebar = () => {
                         >
                             <UserIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
                             {isOpen && <span className="ml-4">Профиль</span>}
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink
+                            to="/login"
+                            className={({ isActive }) =>
+                                `group flex items-center justify-start m-2.5 p-2.5 rounded-lg transition duration-200 ${
+                                    isActive
+                                        ? "bg-violet-100 text-violet-600 [&>svg]:text-violet-600"
+                                        : "text-gray-600 hover:bg-violet-100 hover:text-violet-600"
+                                }`
+                            }
+                        >
+                            <ArrowRightCircleIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
+                            {isOpen && <span className="ml-4">Войти</span>}
                         </NavLink>
                     </li>
                 </ul>
