@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 
-const LogOut = () => {
+const LogOut = ({ className }) => {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -15,10 +15,7 @@ const LogOut = () => {
     };
 
     return (
-        <button
-            onClick={handleLogout}
-            className="bg-red-500 text-white py-2 px-4 rounded"
-        >
+        <button onClick={handleLogout} className={className}>
             Выйти
         </button>
     );
