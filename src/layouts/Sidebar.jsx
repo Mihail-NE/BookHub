@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
 import {
     HomeIcon,
     BookOpenIcon,
@@ -14,141 +13,88 @@ import {
 import { DataContext } from "./../context/DataContext";
 import { useAuth } from "../context/AuthContext";
 import Portal from "./Modal";
+import NavItem from "./../features/nav/NavItem";
 
 const Sidebar = () => {
     const { user } = useAuth();
     const { state } = useContext(DataContext);
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
-    };
+    const navItems = [
+        {
+            to: "/",
+            icon: HomeIcon,
+            text: "Главная",
+        },
+        {
+            to: "/catalog",
+            icon: BookOpenIcon,
+            text: "Каталог книг",
+        },
+        {
+            to: "/cart",
+            icon: ShoppingCartIcon,
+            text: "Корзина",
+            count: state.cart.length,
+        },
+        {
+            to: "/favorites",
+            icon: HeartIcon,
+            text: "Избранное",
+            count: state.favorites.length,
+        },
+        {
+            to: "/profile",
+            icon: UserIcon,
+            text: "Профиль",
+        },
+    ];
 
     return (
         <div
-            className={`flex flex-col h-screen bg-white shadow-md transition-all duration-300 sticky top-0 ${
+            className={`flex flex-col h-screen bg-white shadow-md transition-all duration-300 sticky top-0 overflow-hidden ${
                 isOpen ? "w-60" : "w-16"
             }`}
         >
             <button
-                onClick={toggleSidebar}
+                onClick={() => setIsOpen(!isOpen)}
                 className="p-4 text-gray-500 hover:text-gray-800"
             >
-                {isOpen ? (
-                    <ChevronLeftIcon className="h-6 w-6" />
-                ) : (
-                    <ChevronRightIcon className="h-6 w-6" />
-                )}
+                <div className="w-6 min-w-[24px]">
+                    {isOpen ? (
+                        <ChevronLeftIcon className="h-6 w-6" />
+                    ) : (
+                        <ChevronRightIcon className="h-6 w-6" />
+                    )}
+                </div>
             </button>
 
             <div className="flex-grow justify-between flex flex-col">
                 <div className="mt-4">
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) =>
-                            `group flex items-center justify-start m-2.5 p-2.5 rounded-lg transition duration-200 ${
-                                isActive
-                                    ? "bg-violet-100 text-violet-600 [&>svg]:text-violet-600"
-                                    : "text-gray-600 hover:bg-violet-100 hover:text-violet-600"
-                            }`
-                        }
-                    >
-                        <HomeIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
-                        {isOpen && <span className="ml-4">Главная</span>}
-                    </NavLink>
-
-                    <NavLink
-                        to="/catalog"
-                        className={({ isActive }) =>
-                            `group flex items-center justify-start m-2.5 p-2.5 rounded-lg transition duration-200 ${
-                                isActive
-                                    ? "bg-violet-100 text-violet-600 [&>svg]:text-violet-600"
-                                    : "text-gray-600 hover:bg-violet-100 hover:text-violet-600"
-                            }`
-                        }
-                    >
-                        <BookOpenIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
-                        {isOpen && (
-                            <span className="ml-4 text-nowrap">
-                                Каталог книг
-                            </span>
-                        )}
-                    </NavLink>
-
-                    <NavLink
-                        to="/cart"
-                        className={({ isActive }) =>
-                            `group flex items-center justify-start m-2.5 p-2.5 rounded-lg transition duration-200 relative ${
-                                isActive
-                                    ? "bg-violet-100 text-violet-600 [&>svg]:text-violet-600"
-                                    : "text-gray-600 hover:bg-violet-100 hover:text-violet-600"
-                            }`
-                        }
-                    >
-                        <ShoppingCartIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
-                        {state.cart.length > 0 && (
-                            <span className="absolute -top-2 -right-2 bg-violet-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                                {state.cart.length}
-                            </span>
-                        )}
-                        {isOpen && <span className="ml-4">Корзина</span>}
-                    </NavLink>
-
-                    <NavLink
-                        to="/favorites"
-                        className={({ isActive }) =>
-                            `group flex items-center justify-start m-2.5 p-2.5 rounded-lg transition duration-200 relative ${
-                                isActive
-                                    ? "bg-violet-100 text-violet-600 [&>svg]:text-violet-600"
-                                    : "text-gray-600 hover:bg-violet-100 hover:text-violet-600"
-                            }`
-                        }
-                    >
-                        <HeartIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
-                        {state.favorites.length > 0 && (
-                            <span className="absolute -top-2 -right-2 bg-violet-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                                {state.favorites.length}
-                            </span>
-                        )}
-                        {isOpen && <span className="ml-4">Избранное</span>}
-                    </NavLink>
-
-                    <NavLink
-                        to="/profile"
-                        className={({ isActive }) =>
-                            `group flex items-center justify-start m-2.5 p-2.5 rounded-lg transition duration-200 ${
-                                isActive
-                                    ? "bg-violet-100 text-violet-600 [&>svg]:text-violet-600"
-                                    : "text-gray-600 hover:bg-violet-100 hover:text-violet-600"
-                            }`
-                        }
-                    >
-                        <UserIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
-                        {isOpen && <span className="ml-4">Профиль</span>}
-                    </NavLink>
+                    {navItems.map((item) => (
+                        <NavItem
+                            key={item.to}
+                            {...item}
+                            text={
+                                isOpen && (
+                                    <span className="ml-4">{item.text}</span>
+                                )
+                            }
+                        />
+                    ))}
                 </div>
 
                 {!user ? (
-                    <NavLink
-                        to="/login"
-                        className={({ isActive }) =>
-                            `group flex items-center justify-start m-2.5 p-2.5 mb-3 rounded-lg transition duration-200 ${
-                                isActive
-                                    ? "bg-violet-100 text-violet-600 [&>svg]:text-violet-600"
-                                    : "text-gray-600 hover:bg-violet-100 hover:text-violet-600"
-                            }`
-                        }
-                    >
-                        <ArrowLeftEndOnRectangleIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
-                        {isOpen && <span className="ml-4">Войти</span>}
-                    </NavLink>
+                    <NavItem
+                        to="/signup"
+                        icon={ArrowLeftEndOnRectangleIcon}
+                        text={isOpen && <span className="ml-4">Войти</span>}
+                    />
                 ) : (
-                    <Portal
-                        className={
-                            "group flex items-center justify-start m-2.5 p-2.5 rounded-lg transition duration-200 text-gray-600 hover:bg-violet-100 hover:text-violet-600"
-                        }
-                    >
-                        <ArrowLeftStartOnRectangleIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
+                    <Portal className="group flex items-center m-2.5 p-2.5 mb-3 rounded-lg transition duration-200 text-gray-600 hover:bg-violet-100 hover:text-violet-600">
+                        <div className="w-6 min-w-[24px]">
+                            <ArrowLeftStartOnRectangleIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
+                        </div>
                         {isOpen && <span className="ml-4">Выйти</span>}
                     </Portal>
                 )}

@@ -1,12 +1,7 @@
-import SignUp from "../../features/auth/SignUp"
-
+import SignUp from "../../features/auth/SignUp";
 
 const Auth = () => {
-  return (
-    <div>Auth
-      <SignUp />
-    </div>
-  )
-}
+    return <SignUp />;
+};
 
-export default Auth
+export default Auth;

@@ -10,6 +10,7 @@ import { AuthProvider } from "../context/AuthContext";
 import Auth from "../pages/Auth/Auth";
 import Profile from "../pages/Profile/Profile";
 import { ProtectedRoute } from "./ProtectedRoute";
+import SignIn from "./../features/auth/SignIn";
 
 function App() {
     return (
@@ -22,7 +23,8 @@ function App() {
                             <Route path="/catalog" element={<CatalogPage />} />
                             <Route path="/cart" element={<Cart />} />
                             <Route path="/favorites" element={<Favorites />} />
-                            <Route path="/login" element={<Auth />} />
+                            <Route path="/signup" element={<Auth />} />
+                            <Route path="/login" element={<SignIn />} />
                             <Route
                                 path="/profile"
                                 element={
