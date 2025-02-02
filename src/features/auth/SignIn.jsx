@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
 import GoogleAuth from "./GoogleAuth";
+import { useAuth } from "../../hooks/useAuth";
+import LoadingButton from "./LoadingButton";
 
 const SignIn = () => {
+    const {
+        loading,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        error,
+        handleSignIn,
+    } = useAuth();
+
     return (
         <div className="w-[500px] mx-auto p-12 rounded-xl border border-gray-200 mt-20">
             <h1 className="text-center font-bold text-4xl text-gray-800">
@@ -17,8 +29,10 @@ const SignIn = () => {
                 <div className="flex-grow border-t border-gray-300"></div>
             </div>
 
-            <form className="flex flex-col gap-4 mt-5">
-                <div className="flex flex-col gap-2 ">
+            {error && <p className="text-red-500 text-center my-2">{error}</p>}
+
+            <form onSubmit={handleSignIn} className="flex flex-col gap-4 mt-5">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="email" className="text-gray-800 text-lg">
                         Email
                     </label>
@@ -27,11 +41,13 @@ const SignIn = () => {
                         id="email"
                         type="email"
                         placeholder="example@mail.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </div>
 
-                <div className="flex flex-col gap-2 ">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="password" className="text-gray-800 text-lg">
                         Password
                     </label>
@@ -40,17 +56,14 @@ const SignIn = () => {
                         id="password"
                         type="password"
                         placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         required
                         minLength={6}
                     />
                 </div>
 
-                <button
-                    type="submit"
-                    className="flex items-center justify-center mt-6 w-full gap-3 px-4 py-3 bg-violet-500 text-white rounded-lg text-lg  hover:bg-purple-600 hover:border-purple-400 transition-all duration-200"
-                >
-                    Войти
-                </button>
+                <LoadingButton loading={loading}>Войти</LoadingButton>
             </form>
             <div className="mt-6 text-center text-gray-500">
                 <span>

@@ -1,19 +1,24 @@
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { serverTimestamp } from "firebase/firestore";
 
 export const createOrUpdateUser = async (user) => {
-    const userRef = doc(db, "users", user.uid);
-
-    await setDoc(
-        userRef,
-        {
-            displayName: user.displayName,
-            email: user.email,
-            photoURL: user.photoURL,
-            lastLogin: new Date(),
-        },
-        { merge: true }
-    );
+    try {
+        const userRef = doc(db, "users", user.uid);
+        await setDoc(
+            userRef,
+            {
+                email: user.email,
+                displayName: user.displayName,
+                photoURL: user.photoURL,
+                lastLogin: serverTimestamp(),
+            },
+            { merge: true }
+        );
+    } catch (error) {
+        console.error("Ошибка при создании/обновлении пользователя:", error);
+        throw error;
+    }
 };
 
 export const getUserData = async (userId) => {

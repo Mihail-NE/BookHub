@@ -11,12 +11,12 @@ import {
     ArrowLeftStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import { DataContext } from "./../context/DataContext";
-import { useAuth } from "../context/AuthContext";
+import { useAuthContext } from "./../context/AuthContext";
 import Portal from "./Modal";
 import NavItem from "./../features/nav/NavItem";
 
 const Sidebar = () => {
-    const { user } = useAuth();
+    const { user } = useAuthContext();
     const { state } = useContext(DataContext);
     const [isOpen, setIsOpen] = useState(false);
 

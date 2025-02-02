@@ -8,7 +8,7 @@ const LogOut = ({ className }) => {
     const handleLogout = async () => {
         try {
             await signOut(auth);
-            navigate("/home");
+            navigate("/login");
         } catch (error) {
             console.error("Ошибка выхода:", error.message);
         }
