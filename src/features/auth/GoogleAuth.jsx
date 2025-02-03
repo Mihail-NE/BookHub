@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../firebase/config";
-import { createOrUpdateUser } from "../../firebase/users";
+import { auth } from "../../services/firebase/config";
+import { createOrUpdateUser } from "../../services/firebase/users";
 import { useNavigate } from "react-router-dom";
 
 const GoogleAuth = () => {

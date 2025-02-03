@@ -2,12 +2,12 @@ import { createContext, useState, useEffect, useReducer } from "react";
 import { reducer, initialState } from "./Reducer";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import useBooks from "../hooks/useBooks";
-import { fetchBooks } from "../api/fetchBooks";
+import { fetchBooks } from "../services/api/fetchBooks";
 
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-    const { isLoading, isError, books, } = useBooks();
+    const { isLoading, isError, books } = useBooks();
     const [cartID, setCartID] = useState([]);
     const [state, dispatch] = useReducer(reducer, initialState);
     const [storedCart, setStoredCart] = useLocalStorage("cart", []);

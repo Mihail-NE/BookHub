@@ -1,5 +1,5 @@
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import { db } from "./config";
+import { db } from "../firebase/config";
 import { serverTimestamp } from "firebase/firestore";
 
 export const createOrUpdateUser = async (user) => {

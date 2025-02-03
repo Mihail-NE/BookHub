@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { auth } from "../firebase/config";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendEmailVerification,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../services/firebase/config";
 
 export const useAuth = () => {
     const [email, setEmail] = useState("");
