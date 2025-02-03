@@ -1,18 +1,11 @@
 import { useState, useEffect } from "react";
 import { auth, db } from "../../services/firebase/config";
 import { doc, getDoc } from "firebase/firestore";
+import { formatTimestamp } from "../../utils/formatTimestamp";
+import ProfilePhoto from "./ProfilePhoto";
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
-
-    const formatTimestamp = (timestamp) => {
-        if (!timestamp) return "";
-        return new Date(timestamp.seconds * 1000).toLocaleDateString("ru-RU", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-        });
-    };
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -31,16 +24,23 @@ const Profile = () => {
         <div className="max-w-4xl mx-auto p-6">
             <div className="bg-white rounded-lg shadow-lg p-8">
                 <div className="flex items-center space-x-6 mb-8">
-                    <img
-                        src={auth.currentUser?.photoURL}
-                        alt="Profile"
-                        className="w-24 h-24 rounded-full object-cover"
-                    />
+                    {auth.currentUser.photoURL ? (
+                        <div className="relative group">
+                            <img
+                                src={auth.currentUser.photoURL}
+                                alt="Profile"
+                                className="w-24 h-24 rounded-full object-cover"
+                            />
+                        </div>
+                    ) : (
+                        <ProfilePhoto />
+                    )}
+
                     <div>
                         <h2 className="text-2xl font-bold text-gray-800">
                             {auth.currentUser?.displayName}
                         </h2>
-                        <p className="text-gray-600">
+                        <p className="text-gray-800">
                             {auth.currentUser?.email}
                         </p>
                     </div>
@@ -59,7 +59,7 @@ const Profile = () => {
                             </div>
                             <div className="bg-gray-50 p-4 rounded-lg">
                                 <p className="text-sm text-gray-500">Статус</p>
-                                <p className="font-medium">
+                                <p className="font-medium text-green-600">
                                     {userData.status || "Активный"}
                                 </p>
                             </div>
