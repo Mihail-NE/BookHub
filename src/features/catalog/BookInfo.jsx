@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import useBooks from "../../shared/hooks/useBooks";
 import { DataContext } from "../../shared/context/DataContext";
+import Button from "../../shared/components/Button/Button";
 
 const BookInfo = () => {
     const { id } = useParams();
@@ -46,19 +47,23 @@ const BookInfo = () => {
                     />
 
                     {book.saleInfo.listPrice && (
-                        <button
+                        <Button
                             onClick={addToCart}
-                            className="mt-3 w-full block text-center bg-violet-500 text-white py-2 rounded-md"
+                            type="primary"
+                            size="medium"
+                            className="w-full mt-3"
                         >
                             Добавить в корзину
-                        </button>
+                        </Button>
                     )}
-                    <button
+                    <Button
                         onClick={addToFavorites}
-                        className="mt-3 w-full block text-center bg-violet-500 text-white py-2 rounded-md"
+                        type="primary"
+                        size="medium"
+                        className="w-full mt-2"
                     >
                         Добавить в избранное
-                    </button>
+                    </Button>
                 </div>
 
                 <div className="w-2/3">

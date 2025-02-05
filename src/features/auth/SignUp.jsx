@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import GoogleAuth from "./GoogleAuth";
 import { useAuth } from "../../shared/hooks/useAuth";
-import LoadingButton from "./LoadingButton";
+import LoadingButton from "../../shared/components/Button/LoadingButton";
 
 const SignUp = () => {
-    // const { loading } = useAuthContext();
     const {
         loading,
         email,

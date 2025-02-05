@@ -1,17 +1,13 @@
-import { Link } from "react-router-dom";
 import { useAuthContext } from "../../shared/context/AuthContext";
+import Sceleton from "../../shared/components/Sceleton/Sceleton";
+import AnonymousProfile from "../../features/profile/AnonymousProfile";
 
 export const ProtectedRoute = ({ children }) => {
     const { user, loading } = useAuthContext();
 
-    if (loading) return <div>Загрузка...</div>;
+    if (loading) return <Sceleton />;
 
-    if (!user)
-        return (
-            <Link to="/login">
-                <button>регистрация</button>
-            </Link>
-        );
+    if (!user) return <AnonymousProfile />;
 
     return children;
 };

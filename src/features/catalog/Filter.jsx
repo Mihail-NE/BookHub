@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useBooks from "../../shared/hooks/useBooks";
+import Button from "../../shared/components/Button/Button";
 
 const FILTER_OPTIONS = [
     { id: 1, value: "title", label: "Названию" },
@@ -73,12 +74,9 @@ const Filter = ({ newFilteredBooks }) => {
                     </option>
                 ))}
             </select>
-            <button
-                className="bg-violet-500 text-white rounded-md px-4 py-2 hover:bg-violet-600 transition duration-200"
-                onClick={removeFilters}
-            >
+            <Button type="primary" size="medium" onClick={removeFilters}>
                 Сбросить
-            </button>
+            </Button>
         </div>
     );
 };

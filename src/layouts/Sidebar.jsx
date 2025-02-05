@@ -1,54 +1,21 @@
 import { useState, useContext } from "react";
 import {
-    HomeIcon,
-    BookOpenIcon,
-    ShoppingCartIcon,
-    UserIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
-    HeartIcon,
     ArrowLeftEndOnRectangleIcon,
     ArrowLeftStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import { DataContext } from "../shared/context/DataContext";
 import { useAuthContext } from "../shared/context/AuthContext";
-import Portal from "./Modal";
+import Portal from "../shared/components/Modal/Modal";
 import NavItem from "./../features/nav/NavItem";
+import { getNavItems } from "../features/nav/GetNavItems";
 
 const Sidebar = () => {
     const { user } = useAuthContext();
     const { state } = useContext(DataContext);
     const [isOpen, setIsOpen] = useState(false);
-
-    const navItems = [
-        {
-            to: "/",
-            icon: HomeIcon,
-            text: "Главная",
-        },
-        {
-            to: "/catalog",
-            icon: BookOpenIcon,
-            text: "Каталог книг",
-        },
-        {
-            to: "/cart",
-            icon: ShoppingCartIcon,
-            text: "Корзина",
-            count: state.cart.length,
-        },
-        {
-            to: "/favorites",
-            icon: HeartIcon,
-            text: "Избранное",
-            count: state.favorites.length,
-        },
-        {
-            to: "/profile",
-            icon: UserIcon,
-            text: "Профиль",
-        },
-    ];
+    const navItems = getNavItems(state);
 
     return (
         <div

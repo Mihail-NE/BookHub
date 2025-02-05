@@ -1,54 +1,17 @@
-import CartItem from "./CartItem";
-import CartTotal from "./CartTotal";
+import Button from "../../shared/components/Button/Button";
 import { useContext } from "react";
 import { DataContext } from "../../shared/context/DataContext";
-import { Link } from "react-router-dom";
+import CartTotal from "./CartTotal";
+import CartItem from "./CartItem";
 
-const CartList = () => {
-    const { state, dispatch } = useContext(DataContext);
-
-    const cartProducts = state.cart.map((item) => item);
+const CartList = ({ cartProducts }) => {
+    const { dispatch } = useContext(DataContext);
 
     const clearCart = () => {
         dispatch({
             type: "CLEAR_CART",
         });
     };
-
-    if (cartProducts.length === 0) {
-        return (
-            <div className="p-14 flex justify-center items-center min-h-[70vh]">
-                <div className="w-2/3 mx-auto bg-white rounded-lg shadow-lg p-12 text-center">
-                    <div className="mb-8">
-                        <svg
-                            className="w-24 h-24 mx-auto text-gray-300"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                            />
-                        </svg>
-                    </div>
-                    <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                        Ваша корзина пуста
-                    </h2>
-                    <p className="text-gray-600 mb-8">
-                        Самое время добавить в неё что-нибудь интересное!
-                    </p>
-                    <Link to="/catalog">
-                        <button className="bg-violet-500 text-white px-6 py-3 rounded-lg hover:bg-violet-600 transition duration-300 ease-in-out transform hover:scale-105">
-                            Перейти к книгам
-                        </button>
-                    </Link>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <div className="p-14 flex gap-10">
@@ -78,17 +41,19 @@ const CartList = () => {
                     ))}
                 </div>
                 <div className="border-t border-gray-200 my-8">
-                    <button
+                    <Button
                         onClick={clearCart}
-                        className="mt-4 px-4 py-2 text-red-500 hover:text-red-600 text-sm font-medium rounded-lg border border-red-200 hover:bg-red-50 transition-colors duration-200"
+                        type="danger"
+                        size="small"
+                        className="mt-4"
                     >
+                        {" "}
                         Очистить корзину
-                    </button>
+                    </Button>
                 </div>
             </div>
             <CartTotal items={cartProducts} />
         </div>
     );
 };
-
 export default CartList;

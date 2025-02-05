@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import LogOut from "../features/auth/LogOut";
+import LogOut from "../../../features/auth/LogOut";
+import Button from "../Button/Button";
 
 const Modal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
@@ -48,7 +49,13 @@ const Portal = ({ children, className }) => {
                     </div>
 
                     <div className="flex items-center justify-center gap-4 mt-8">
-                        <LogOut className="w-32 px-6 py-3 bg-violet-600 text-white font-medium rounded-lg hover:bg-violet-700 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg" />
+                        <Button
+                            type="primary"
+                            size="large"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            <LogOut />
+                        </Button>
                     </div>
                 </div>
             </Modal>

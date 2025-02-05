@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ShoppingCartIcon, HeartIcon } from "@heroicons/react/24/outline";
 import { DataContext } from "../../shared/context/DataContext";
 import { useContext } from "react";
+import Button from "../../shared/components/Button/Button";
 
 const BookCard = ({
     id,
@@ -87,9 +88,9 @@ const BookCard = ({
                         to={`/catalog/${id}`}
                         className="text-xs text-violet-500 hover:underline"
                     >
-                        <button className="text-xs text-white bg-violet-500 hover:bg-violet-600 px-3 py-1 rounded transition">
-                            подробнее
-                        </button>
+                        <Button size="small" type="secondary">
+                            Подробнее
+                        </Button>
                     </Link>
                 </div>
 

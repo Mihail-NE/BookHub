@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "../../shared/components/Button/Button";
 
 const Hero = () => {
     return (
@@ -11,9 +12,7 @@ const Hero = () => {
                     Откройте для себя мир книг и знаний
                 </p>
                 <Link to="/catalog">
-                    <button className="bg-white text-gray-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
-                        Перейти к каталогу
-                    </button>
+                    <Button size="large">Перейти к каталогу</Button>
                 </Link>
             </div>
         </div>

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Layout = ({ children }) => {
     return (
-        <div className="flex ">
+        <div className="flex">
             <Sidebar />
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
