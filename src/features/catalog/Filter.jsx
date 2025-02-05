@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useBooks from "../../../hooks/useBooks";
+import useBooks from "../../shared/hooks/useBooks";
 
 const FILTER_OPTIONS = [
     { id: 1, value: "title", label: "Названию" },

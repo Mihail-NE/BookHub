@@ -1,5 +1,5 @@
-import BookList from "../../features/catalog/BookList/BookList";
-import Filter from "../../features/catalog/Filter/Filter";
+import BookList from "../../features/catalog/BookList";
+import Filter from "../../features/catalog/Filter";
 import { useState } from "react";
 import { motion } from "framer-motion";
 

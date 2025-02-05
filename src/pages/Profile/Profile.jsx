@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { auth, db } from "../../services/firebase/config";
+import { auth, db } from "../../shared/services/firebase/config";
 import { doc, getDoc } from "firebase/firestore";
-import { formatTimestamp } from "../../utils/formatTimestamp";
 import ProfilePhoto from "./ProfilePhoto";
+import { formatTimestamp } from "../../shared/utils/formatTimestamp";
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);

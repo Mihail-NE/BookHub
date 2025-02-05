@@ -1,7 +1,7 @@
-import CartItem from "./../CartItem/CartItem";
-import CartTotal from "../CartTotal/CartTotal";
+import CartItem from "./CartItem";
+import CartTotal from "./CartTotal";
 import { useContext } from "react";
-import { DataContext } from "../../../context/DataContext";
+import { DataContext } from "../../shared/context/DataContext";
 import { Link } from "react-router-dom";
 
 const CartList = () => {

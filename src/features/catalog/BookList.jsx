@@ -1,6 +1,6 @@
-import BookCard from "./../BookCad/BookCad";
-import Sceleton from "../Sceleton/Sceleton";
-import useBooks from "../../../hooks/useBooks";
+import BookCard from "./BookCad";
+import Sceleton from "./Sceleton";
+import useBooks from "../../shared/hooks/useBooks";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
 
 const BookList = ({ books }) => {

@@ -4,7 +4,7 @@ export default {
     theme: {
         extend: {
             backgroundImage: {
-                hero: "url('./src/assets/images/hero.jpg')",
+                hero: "url('./src/shared/assets/hero.jpg')",
             },
             fontFamily: {
                 raleway: ["Raleway", "sans-serif"],

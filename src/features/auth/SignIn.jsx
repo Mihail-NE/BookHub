@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import GoogleAuth from "./GoogleAuth";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../shared/hooks/useAuth";
 import LoadingButton from "./LoadingButton";
 
 const SignIn = () => {

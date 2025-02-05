@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
-import { DataContext } from "../../context/DataContext";
+import { DataContext } from "../../shared/context/DataContext";
 import { TrashIcon, HeartIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 

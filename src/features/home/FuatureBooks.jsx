@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import BookCard from "./../../catalog/BookCad/BookCad";
+import BookCard from "../catalog/BookCad";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import Sceleton from "./../../catalog/Sceleton/Sceleton";
-import useBooks from "../../../hooks/useBooks";
+import Sceleton from "../catalog/Sceleton";
+import useBooks from "../../shared/hooks/useBooks";
 
 const FeaturedBooks = () => {
     const { books, isLoading, isError } = useBooks();

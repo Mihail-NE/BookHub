@@ -2,12 +2,12 @@ const Testimonials = () => {
     const testimonials = [
         {
             name: "Маргарита Егорова",
-            photo: "./src/assets/images/maria.jpg",
+            photo: "./src/shared/assets/maria.jpg",
             text: "Отличный сервис! Быстрая доставка и огромный выбор книг.",
         },
         {
             name: "Иван Краснов",
-            photo: "./src/assets/images/ivan.jpg",
+            photo: "./src/shared/assets/ivan.jpg",
             text: "Очень удобно и легко найти нужную книгу. Рекомендую!",
         },
     ];

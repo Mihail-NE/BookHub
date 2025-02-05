@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
-import { DataContext } from "../../../context/DataContext";
-import useBooks from "../../../hooks/useBooks";
+import useBooks from "../../shared/hooks/useBooks";
+import { DataContext } from "../../shared/context/DataContext";
 
 const BookInfo = () => {
     const { id } = useParams();

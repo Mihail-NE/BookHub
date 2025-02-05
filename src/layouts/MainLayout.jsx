@@ -1,10 +1,17 @@
 import Sidebar from "./Sidebar";
+import { motion } from "framer-motion";
 
 const Layout = ({ children }) => {
     return (
         <div className="flex ">
             <Sidebar />
-            <div className="w-full">{children}</div>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full"
+            >
+                {children}
+            </motion.div>
         </div>
     );
 };

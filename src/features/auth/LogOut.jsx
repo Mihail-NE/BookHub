@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { auth } from "../../services/firebase/config";
+import { auth } from "../../shared/services/firebase/config";
 import { useNavigate } from "react-router-dom";
 
 const LogOut = ({ className }) => {

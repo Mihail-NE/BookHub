@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../../shared/context/AuthContext";
 
 export const ProtectedRoute = ({ children }) => {
     const { user, loading } = useAuthContext();

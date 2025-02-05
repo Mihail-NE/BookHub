@@ -1,8 +1,8 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { auth } from "../../services/firebase/config";
+import { auth } from "../../shared/services/firebase/config";
 import { updateProfile } from "firebase/auth";
-import { createOrUpdateUser } from "../../services/firebase/users";
+import { createOrUpdateUser } from "../../shared/services/firebase/users";
 
 const ProfilePhoto = () => {
     const handleFileUpload = async (event) => {

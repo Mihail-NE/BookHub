@@ -1,4 +1,4 @@
-import CartList from "./../../features/cart/CartList/CartList";
+import CartList from "../../features/cart/CartList";
 import { motion } from "framer-motion";
 
 const Cart = () => {

@@ -10,8 +10,8 @@ import {
     ArrowLeftEndOnRectangleIcon,
     ArrowLeftStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import { DataContext } from "./../context/DataContext";
-import { useAuthContext } from "./../context/AuthContext";
+import { DataContext } from "../shared/context/DataContext";
+import { useAuthContext } from "../shared/context/AuthContext";
 import Portal from "./Modal";
 import NavItem from "./../features/nav/NavItem";
 
