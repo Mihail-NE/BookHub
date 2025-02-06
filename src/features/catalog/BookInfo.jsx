@@ -8,6 +8,7 @@ const BookInfo = () => {
     const { id } = useParams();
     const { books } = useBooks();
     const { dispatch } = useContext(DataContext);
+    const book = books?.items?.find((book) => book.id === id);
 
     const addToCart = () => {
         dispatch({
@@ -34,16 +35,14 @@ const BookInfo = () => {
         });
     };
 
-    const book = books?.items?.find((book) => book.id === id);
-
     return (
-        <div className="max-w-4xl mx-auto p-14">
-            <div className="flex gap-8">
-                <div className="w-1/3">
+        <div className="max-w-4xl mx-auto p-14 mobile:p-4">
+            <div className="flex mobile:flex-col gap-8 mobile:gap-4">
+                <div className="w-1/3 mobile:w-full">
                     <img
                         src={book.volumeInfo.imageLinks?.thumbnail}
                         alt={book.volumeInfo.title}
-                        className="w-full rounded-lg shadow-lg"
+                        className="w-full rounded-lg shadow-lg mobile:max-w-[200px] mobile:mx-auto"
                     />
 
                     {book.saleInfo.listPrice && (
@@ -66,36 +65,36 @@ const BookInfo = () => {
                     </Button>
                 </div>
 
-                <div className="w-2/3">
-                    <h1 className="text-3xl font-bold mb-4">
+                <div className="w-2/3 mobile:w-full">
+                    <h1 className="text-3xl mobile:text-xl font-bold mb-4">
                         {book.volumeInfo.title}
                     </h1>
                     <div className="space-y-4">
-                        <p className="text-xl text-gray-600">
+                        <p className="text-xl mobile:text-lg text-gray-600">
                             Автор: {book.volumeInfo.authors?.join(", ")}
                         </p>
 
-                        <div className="flex gap-4 text-sm text-gray-500">
+                        <div className="flex mobile:flex-col gap-4 mobile:gap-2 text-sm text-gray-500">
                             <span>Издатель: {book.volumeInfo.publisher}</span>
                             <span>Дата: {book.volumeInfo.publishedDate}</span>
                             <span>Страниц: {book.volumeInfo.pageCount}</span>
                         </div>
 
                         {book.saleInfo.listPrice && (
-                            <p className="text-2xl font-bold text-violet-600">
+                            <p className="text-2xl mobile:text-xl font-bold text-violet-600">
                                 {book.saleInfo.listPrice.amount}{" "}
                                 {book.saleInfo.listPrice.currencyCode}
                             </p>
                         )}
 
-                        <div className="bg-gray-50 p-4 rounded-lg">
+                        <div className="bg-gray-50 p-4 mobile:p-3 rounded-lg">
                             <h2 className="font-bold mb-2">Описание:</h2>
-                            <p className="text-gray-700">
+                            <p className="text-gray-700 mobile:text-sm">
                                 {book.volumeInfo.description}
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div className="grid grid-cols-2 mobile:grid-cols-1 gap-4 text-sm">
                             <div>
                                 <strong>ISBN:</strong>{" "}
                                 {
@@ -117,7 +116,7 @@ const BookInfo = () => {
                             </div>
                         </div>
 
-                        <div className="flex gap-4 mt-4">
+                        <div className="flex flex-wrap gap-4 mt-4">
                             {book.accessInfo.pdf.isAvailable && (
                                 <span className="bg-green-100 text-green-800 px-3 py-1 rounded">
                                     PDF доступен
@@ -132,7 +131,7 @@ const BookInfo = () => {
 
                         <a
                             href={book.volumeInfo.previewLink}
-                            className="text-violet-500 hover:underline"
+                            className="text-violet-500 hover:underline block mobile:text-center"
                             target="_blank"
                             rel="noopener noreferrer"
                         >

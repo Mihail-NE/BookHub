@@ -54,29 +54,31 @@ const Filter = ({ newFilteredBooks }) => {
     };
 
     return (
-        <div className="flex items-center justify-center pt-10 pl-14 space-x-4">
+        <div className="flex items-center justify-center pt-10 gap-4 px-8 mx-auto space-x-4 mobile:flex-col sm:flex-col xl:flex-row">
             <input
                 type="text"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 placeholder="Введите текст для поиска"
-                className="border border-gray-300 w-[700px] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                className="border border-gray-300 max-w-[700px] w-full rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-violet-500"
             />
-            <span className="text-gray-700">Искать по</span>
-            <select
-                value={selectedFilter}
-                onChange={(e) => setSelectedFilter(e.target.value)}
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-violet-500"
-            >
-                {FILTER_OPTIONS.map((option) => (
-                    <option key={option.id} value={option.value}>
-                        {option.label}
-                    </option>
-                ))}
-            </select>
-            <Button type="primary" size="medium" onClick={removeFilters}>
-                Сбросить
-            </Button>
+            <div className="flex gap-4 items-center">
+                <span className="text-gray-700 mobile:text-sm">Искать по</span>
+                <select
+                    value={selectedFilter}
+                    onChange={(e) => setSelectedFilter(e.target.value)}
+                    className="border border-violet-300 rounded-md p-2 focus:outline-none text-violet-800 focus:ring-2 bg-violet-50 focus:ring-violet-500  cursor-pointer mobile:text-sm"
+                >
+                    {FILTER_OPTIONS.map((option) => (
+                        <option key={option.id} value={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+                </select>
+                <Button type="primary" size="medium" onClick={removeFilters}>
+                    Сбросить
+                </Button>
+            </div>
         </div>
     );
 };

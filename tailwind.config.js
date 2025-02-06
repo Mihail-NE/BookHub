@@ -10,6 +10,10 @@ export default {
                 raleway: ["Raleway", "sans-serif"],
                 josefin: ["Josefin Sans", "sans-serif"],
             },
+            screens: {
+                mobile: { max: "699px", min: "300px" },
+                tablet: { max: "1279px" },
+            },
         },
     },
     plugins: [],

@@ -3,9 +3,9 @@ import EmptyBookList from "./EmptyBookList";
 
 const BookList = ({ books }) => {
     return (
-        <div className="p-14 flex flex-col gap-5">
+        <div className="p-14 flex flex-col gap-5 mobile:p-0 mobile:mt-12">
             <EmptyBookList books={books} />
-            <div className="grid grid-cols-2 gap-10 w-full mx-auto">
+            <div className="grid grid-cols-1 2xl:grid-cols-2 gap-10 w-full mx-auto">
                 {books?.items?.map((book) => (
                     <BookCard
                         key={book.id}

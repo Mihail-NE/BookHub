@@ -8,14 +8,14 @@ const FeaturedBooks = () => {
     const { books, isLoading, isError } = useBooks();
 
     return (
-        <div className="container mx-auto py-16">
+        <div className="container mx-auto py-16 mobile:py-8">
             <div className="text-center mb-16">
-                <h2 className="font-josefin text-4xl font-bold text-gray-800 mb-4">
+                <h2 className="font-josefin text-4xl font-bold text-gray-800 mb-4 mobile:text-2xl">
                     Рекомендуемые книги
                 </h2>
                 <div className="w-24 h-1 bg-violet-500 mx-auto"></div>
             </div>
-            <div className="flex flex-wrap gap-8 justify-center">
+            <div className="flex flex-wrap gap-8 justify-center sm:m-2">
                 {isLoading && <Sceleton />}
                 {isError && (
                     <p className="text-center text-red-500">

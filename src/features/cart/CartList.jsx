@@ -14,8 +14,8 @@ const CartList = ({ cartProducts }) => {
     };
 
     return (
-        <div className="p-14 flex gap-10">
-            <div className="w-2/3 mx-auto bg-white rounded-lg shadow-lg p-6">
+        <div className="p-8 flex flex-col 2xl:flex-row gap-10 mobile:p-3">
+            <div className="w-4/3 mx-auto bg-white rounded-lg shadow-lg p-6">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">
                     Корзина
                 </h2>
@@ -24,13 +24,13 @@ const CartList = ({ cartProducts }) => {
                     <div className="w-2/5 text-gray-600 font-semibold">
                         Товар
                     </div>
-                    <div className="w-1/5 text-center text-gray-600 font-semibold">
+                    <div className="w-1/5 text-center text-gray-600 font-semibold ">
                         Цена
                     </div>
-                    <div className="w-1/5 text-center text-gray-600 font-semibold">
+                    <div className="w-1/5 text-center text-gray-600 font-semibold mobile:hidden">
                         Количество
                     </div>
-                    <div className="w-1/5 text-center text-gray-600 font-semibold">
+                    <div className="w-1/5 text-center text-gray-600 font-semibold mobile:hidden">
                         Итого
                     </div>
                 </div>

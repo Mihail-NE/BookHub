@@ -13,7 +13,7 @@ const Testimonials = () => {
     ];
 
     return (
-        <div className="container mx-auto py-16">
+        <div className="container mx-auto py-16 px-6">
             <h2 className="text-3xl font-bold text-gray-800  text-center mb-12">
                 Что говорят наши читатели
             </h2>

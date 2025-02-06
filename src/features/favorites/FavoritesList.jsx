@@ -13,8 +13,8 @@ const FavoritesList = ({ favoriteProducts }) => {
     };
 
     return (
-        <div className="p-14 flex gap-10">
-            <div className="w-2/3 mx-auto bg-white rounded-lg shadow-lg p-6">
+        <div className="p-14 flex gap-10 mobile:p-4">
+            <div className="mx-auto bg-white rounded-lg shadow-lg p-6">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">
                     Избранное
                 </h2>
@@ -23,7 +23,7 @@ const FavoritesList = ({ favoriteProducts }) => {
                     <div className="w-3/5 text-gray-600 font-semibold">
                         Товар
                     </div>
-                    <div className="w-1/5 text-center text-gray-600 font-semibold">
+                    <div className="w-1/5 text-center text-gray-600 font-semibold mobile:hidden">
                         Цена
                     </div>
                     <div className="w-1/5 text-center text-gray-600 font-semibold">
@@ -36,17 +36,17 @@ const FavoritesList = ({ favoriteProducts }) => {
                             key={index}
                             className="flex justify-between items-center p-4 hover:bg-gray-50 transition"
                         >
-                            <div className="w-3/5 flex items-center gap-4">
+                            <div className="w-3/5 flex items-center gap-4 mobile:w-4/5">
                                 <img
                                     src={item.cover}
                                     alt={item.title}
                                     className="w-16 h-20 object-cover rounded"
                                 />
-                                <span className="font-medium text-gray-800">
+                                <span className="font-medium text-gray-800 line-clamp-3 text-ellipsis">
                                     {item.title}
                                 </span>
                             </div>
-                            <div className="w-1/5 text-center text-gray-600">
+                            <div className="w-1/5 text-center text-gray-600 mobile:hidden">
                                 {item.price} ₽
                             </div>
                             <div className="w-1/5 flex justify-center items-center">

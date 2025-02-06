@@ -46,13 +46,13 @@ const BookCard = ({
     };
 
     return (
-        <div className="flex bg-white items-center shadow-md rounded-lg overflow-hidden w-[660px] mx-auto relative">
+        <div className="flex bg-white items-center shadow-md rounded-lg overflow-hidden w-[660px] mx-auto relative mobile:w-[300px] mobile:flex-col">
             <div className="h-[200px] w-32 bg-gray-200 flex  justify-center flex-shrink-0">
                 {cover ? (
                     <img
                         src={cover}
                         alt={title}
-                        className="w-full h-full object-cover "
+                        className="w-full h-full object-cover"
                         loading="lazy"
                     />
                 ) : (
@@ -60,9 +60,9 @@ const BookCard = ({
                 )}
             </div>
 
-            <div className="flex flex-col justify-between p-4 flex-grow">
+            <div className="flex flex-col p-4 flex-grow">
                 <div>
-                    <h2 className="text-base text-wrap font-semibold text-gray-900 truncate">
+                    <h2 className="text-base text-wrap font-semibold text-gray-900 line-clamp-3 text-ellipsis">
                         {title}
                     </h2>
                     <p className="text-sm text-gray-500 mb-2 truncate">

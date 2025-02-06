@@ -23,7 +23,7 @@ const Profile = () => {
     return (
         <div className="max-w-4xl mx-auto p-6">
             <div className="bg-white rounded-lg shadow-lg p-8">
-                <div className="flex items-center space-x-6 mb-8">
+                <div className="flex items-center space-x-6 mb-8 gap-8 mobile:flex-col ">
                     {auth.currentUser.photoURL ? (
                         <div className="relative group">
                             <img
