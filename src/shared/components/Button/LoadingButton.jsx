@@ -2,7 +2,7 @@ const LoadingButton = ({ loading, children }) => {
     return (
         <button
             type="submit"
-            className="flex items-center justify-center mt-6 w-full gap-3 px-4 py-3 bg-violet-600 text-white rounded-lg text-lg hover:bg-purple-500 hover:border-purple-400 transition-all duration-200"
+            className="flex items-center justify-center mt-6 w-full gap-3 px-4 py-3 bg-violet-600 text-white rounded-lg text-lg hover:bg-purple-500 hover:border-purple-400 transition-all duration-200 cursor-pointer"
             disabled={loading}
         >
             {loading ? (

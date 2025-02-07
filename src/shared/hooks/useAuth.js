@@ -27,7 +27,6 @@ export const useAuth = () => {
             );
             if (user) {
                 navigate("/profile", { replace: true });
-                setLoading(false);
             }
         } catch (error) {
             const errorMessages = {
@@ -39,6 +38,7 @@ export const useAuth = () => {
             setError(
                 errorMessages[error.code] || `Ошибка входа: ${error.message}`
             );
+            setLoading(false);
         }
     };
 
