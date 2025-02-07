@@ -14,7 +14,7 @@ const Providers = ({ children }) => {
     });
 
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/BookHub">
             <QueryClientProvider client={queryClient}>
                 <AuthProvider>
                     <DataProvider>{children}</DataProvider>
