@@ -1,8 +1,5 @@
 import { useState, useContext } from "react";
-import {
-    ArrowLeftEndOnRectangleIcon,
-    ArrowLeftStartOnRectangleIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/outline";
 import { DataContext } from "../shared/context/DataContext";
 import { useAuthContext } from "../shared/context/AuthContext";
 import Portal from "../shared/components/Modal/Modal";
@@ -29,7 +26,6 @@ const Sidebar = () => {
                     </button>
                 </div>
 
-                {/* Мобильное выпадающее меню */}
                 <div
                     className={`absolute top-full left-0 right-0 bg-white shadow-md transition-all duration-300 ${
                         isOpen ? "max-h-screen" : "max-h-0"
@@ -51,18 +47,20 @@ const Sidebar = () => {
                                 text={<span className="ml-4">Войти</span>}
                             />
                         ) : (
-                            <Portal className="group flex items-center p-2.5 rounded-lg transition duration-200 text-gray-600 hover:bg-violet-100 hover:text-violet-600">
-                                <div className="w-6 min-w-[24px]">
-                                    <ArrowLeftStartOnRectangleIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
+                            <Portal>
+                                <div className="w-6 min-w-[24px] flex-shrink-0">
+                                    <ArrowLeftEndOnRectangleIcon className="h-6 w-6 transition-colors duration-200 text-gray-600 group-hover:text-violet-600" />
                                 </div>
-                                <span className="ml-4">Выйти</span>
+
+                                <span className="ml-8 whitespace-nowrap">
+                                    Выйти
+                                </span>
                             </Portal>
                         )}
                     </div>
                 </div>
             </div>
 
-            {/* Десктопная версия - боковое меню */}
             <div
                 className={`hidden xl:flex flex-col h-screen bg-white shadow-md transition-all duration-300 sticky top-0 overflow-hidden ${
                     isOpen ? "w-60" : "w-16"
@@ -101,11 +99,16 @@ const Sidebar = () => {
                             text={isOpen && <span className="ml-4">Войти</span>}
                         />
                     ) : (
-                        <Portal className=" w-full flex items-center m-2.5 p-2.5 mb-3 rounded-lg transition duration-200 text-gray-600 hover:bg-violet-100 hover:text-violet-600">
+                        <Portal>
                             <div className="w-6 min-w-[24px] flex-shrink-0">
-                                <ArrowLeftStartOnRectangleIcon className="h-6 w-6 text-gray-600 transition-colors duration-200 group-hover:text-violet-600" />
+                                <ArrowLeftEndOnRectangleIcon className="h-6 w-6 transition-colors duration-200 text-gray-600 group-hover:text-violet-600" />
                             </div>
-                            {isOpen && <span className="ml-4">Выйти</span>}
+
+                            {isOpen && (
+                                <span className="ml-4 whitespace-nowrap">
+                                    Выйти
+                                </span>
+                            )}
                         </Portal>
                     )}
                 </div>

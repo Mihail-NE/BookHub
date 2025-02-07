@@ -28,14 +28,15 @@ const Modal = ({ isOpen, onClose, children }) => {
     );
 };
 
-const Portal = ({ children, className }) => {
+const Portal = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <>
-            <button className={className} onClick={() => setIsOpen(true)}>
-                {children}
-            </button>
+        <div
+            onClick={() => setIsOpen(!isOpen)}
+            className="group flex items-center m-2.5 p-2.5 rounded-lg transition duration-200 relative text-gray-600 hover:bg-violet-100 hover:text-violet-600 cursor-pointer"
+        >
+            {children}
 
             <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
                 <div className="p-8 max-w-md w-full bg-white rounded-xl">
@@ -59,7 +60,7 @@ const Portal = ({ children, className }) => {
                     </div>
                 </div>
             </Modal>
-        </>
+        </div>
     );
 };
 

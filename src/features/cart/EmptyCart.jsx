@@ -3,8 +3,8 @@ import Button from "../../shared/components/Button/Button";
 
 const EmptyCart = () => {
     return (
-        <div className="p-14 flex justify-center items-center min-h-[70vh]">
-            <div className="w-2/3 mx-auto bg-white rounded-lg shadow-lg p-12 text-center">
+        <div className="flex justify-center items-center min-h-[70vh]">
+            <div className="w-4/5 mx-auto bg-white rounded-lg shadow-lg p-8 text-center">
                 <div className="mb-8">
                     <svg
                         className="w-24 h-24 mx-auto text-gray-300"
@@ -20,10 +20,10 @@ const EmptyCart = () => {
                         />
                     </svg>
                 </div>
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                <h2 className="text-3xl font-bold text-gray-800 mb-4 mobile:text-2xl">
                     Ваша корзина пуста
                 </h2>
-                <p className="text-gray-600 mb-8">
+                <p className="text-gray-600 mb-8 mobile:text-md">
                     Самое время добавить в неё что-нибудь интересное!
                 </p>
                 <Link to="/catalog">
