@@ -54,7 +54,7 @@ export const useAuth = () => {
                 password
             );
             const actionCodeSettings = {
-                url: "http://localhost:5173/login",
+                url: "https://mihail-ne.github.io/BookHub/login",
                 handleCodeInApp: true,
             };
 

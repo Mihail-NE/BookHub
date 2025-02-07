@@ -4,7 +4,7 @@ export default {
     theme: {
         extend: {
             backgroundImage: {
-                hero: "url('./src/shared/assets/hero.jpg')",
+                hero: "url('/BookHub/assets/hero.jpg')",
             },
             fontFamily: {
                 raleway: ["Raleway", "sans-serif"],
