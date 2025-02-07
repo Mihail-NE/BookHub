@@ -24,7 +24,7 @@ BookHub — это веб-приложение для поиска, просмо
 ### 1. Клонирование репозитория
 
 ```bash
-git clone https://github.com/ваш-username/bookhub.git
+git https://github.com/Mihail-NE/BookHub.git
 cd bookhub
 ```
 
